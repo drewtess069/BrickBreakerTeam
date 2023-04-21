@@ -37,6 +37,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.Name = "levelDesign";
             this.Size = new System.Drawing.Size(791, 482);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.levelDesign_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.levelDesign_MouseClick);
             this.ResumeLayout(false);
 

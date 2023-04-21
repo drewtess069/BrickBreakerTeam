@@ -25,7 +25,18 @@ namespace BrickBreaker
             int x = e.X;
             int y = e.Y;
 
-        
+            Block newBlock = new Block(x, y, 2, Color.Red);
+            blocks.Add(newBlock);
+            Refresh();
+        }
+
+        private void levelDesign_Paint(object sender, PaintEventArgs e)
+        {
+            foreach (Block b in blocks) 
+            {
+            Rectangle currentBlock = new Rectangle(b.x,b.y,b.width,b.height);
+            e.Graphics.FillRectangle(Brushes.Red, currentBlock);
+            }
         }
     }
 }
