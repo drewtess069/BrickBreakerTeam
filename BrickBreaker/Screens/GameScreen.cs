@@ -178,6 +178,8 @@ namespace BrickBreaker
                 }
             }
 
+            
+
             //redraw the screen
             Refresh();
         }
