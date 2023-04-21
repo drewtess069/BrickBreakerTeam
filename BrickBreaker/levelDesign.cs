@@ -12,9 +12,18 @@ namespace BrickBreaker
 {
     public partial class levelDesign : UserControl
     {
+        List<Block> blocks = new List<Block>();
+        List<Label> blockLabels = new List<Label>();
+
         public levelDesign()
         {
             InitializeComponent();
+        }
+
+        private void levelDesign_MouseClick(object sender, MouseEventArgs e)
+        {
+            int x = e.X;
+            int y = e.Y;
         }
     }
 }
