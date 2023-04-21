@@ -13,7 +13,7 @@ namespace BrickBreaker
     public partial class levelDesign : UserControl
     {
         List<Block> blocks = new List<Block>();
-        List<Label> blockLabels = new List<Label>();
+        List<TextBox> blockBox = new List<TextBox>();
 
         public levelDesign()
         {
@@ -24,6 +24,8 @@ namespace BrickBreaker
         {
             int x = e.X;
             int y = e.Y;
+
+        
         }
     }
 }
