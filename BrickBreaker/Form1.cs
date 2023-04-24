@@ -13,6 +13,7 @@ namespace BrickBreaker
     public partial class Form1 : Form
     {
 
+
         int points = 0;
         int level = 1;
         int lives = 3;
