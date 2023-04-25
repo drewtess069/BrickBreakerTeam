@@ -43,8 +43,15 @@ namespace BrickBreaker
         {
             InitializeComponent();
             OnStart();
+            PointsAndLives();
         }
 
+        public void PointsAndLives()
+        {
+            livesLabel.Text = $"Lives: {lives}";
+            int score = 0;
+            scoreLabel.Text = $"Score: {score}";
+        }
 
         public void OnStart()
         {
@@ -146,6 +153,7 @@ namespace BrickBreaker
             if (ball.BottomCollision(this))
             {
                 lives--;
+                PointsAndLives();
 
                 // Moves the ball back to origin
                 ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
