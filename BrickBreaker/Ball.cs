@@ -8,8 +8,9 @@ namespace BrickBreaker
     {
         public int x, y, xSpeed, ySpeed, size;
         public Color colour;
-
         public static Random rand = new Random();
+        public bool canCollide = true;
+        public int collisionTimer;
 
         public Ball(int _x, int _y, int _xSpeed, int _ySpeed, int _ballSize)
         {
@@ -47,20 +48,38 @@ namespace BrickBreaker
             Rectangle rightSideRec = new Rectangle(p.x + p.width + 3, p.y, 3, p.height);
             Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
 
-            if (ballRec.IntersectsWith(paddleRec))
+            #region Paddle side collision code
+            if (canCollide == true)
             {
-                ySpeed *= -1;
+                if (ballRec.IntersectsWith(paddleRec) && ballRec.Y <= 617)
+                {
+                    ySpeed *= -1;
+                    canCollide = false;
+                }
+                if (ballRec.IntersectsWith(leftSideRec))
+                {
+                    xSpeed *= -1;
+                    canCollide = false;
+                }
+                if (ballRec.IntersectsWith(rightSideRec))
+                {
+                    xSpeed *= -1;
+                    canCollide = false;
+                }
             }
+            else if (canCollide == false)
+            {
+                collisionTimer++;
+            }
+            #endregion
 
-            if (ballRec.IntersectsWith(leftSideRec))
+            #region Collision timer
+            if (collisionTimer >= 100)
             {
-                xSpeed *= -1;
+                canCollide = true;
+                collisionTimer = 0;
             }
-
-            if (ballRec.IntersectsWith(rightSideRec))
-            {
-                xSpeed *= -1;
-            }
+            #endregion
         }
 
         public void WallCollision(UserControl UC)
