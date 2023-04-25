@@ -24,7 +24,8 @@ namespace BrickBreaker
 
         // Game values
         int lives;
-        int score = 0;
+        public static int score = 0;
+
 
         // Paddle and Ball objects
         Paddle paddle;
@@ -58,6 +59,7 @@ namespace BrickBreaker
         {
             //set life counter
             lives = 3;
+            score = 0;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -160,6 +162,7 @@ namespace BrickBreaker
             if (ball.BottomCollision(this))
             {
                 lives--;
+                score -= 200;
                 ScoreAndLives(); //display updated lives count
 
                 // Moves the ball back to origin
@@ -186,6 +189,8 @@ namespace BrickBreaker
                     score++;
                     ScoreAndLives(); // display updated score
 
+                    score += 100;
+
                     if (blocks.Count == 0)
                     {
                         gameTimer.Enabled = false;
@@ -196,7 +201,51 @@ namespace BrickBreaker
                 }
             }
 
-            
+            //check and display lives
+            if (lives > 4)
+            {
+                life5.Visible = true;
+            }
+            else
+            {
+                life5.Visible = false;
+            }
+            if (lives > 3)
+            {
+                life4.Visible = true;
+            }
+            else
+            {
+                life4.Visible = false;
+            }
+            if (lives > 2)
+            {
+                life3.Visible = true;
+            }
+            else
+            {
+                life3.Visible = false;
+            }
+            if (lives > 1)
+            {
+                life2.Visible = true;
+            }
+            else
+            {
+                life2.Visible = false;
+            }
+            if (lives > 0)
+            {
+                life1.Visible = true;
+            }
+            else
+            {
+                life1.Visible = false;
+            }
+
+            //check and display score
+            scoreOutput.Text = $"{score}";
+
 
             //redraw the screen
             Refresh();
@@ -205,7 +254,14 @@ namespace BrickBreaker
         public void OnEnd()
         {
             // Goes to the game over screen
-            Form1.ChangeScreen(this, new EndScreen());
+            Form form = this.FindForm();
+            GameOverScreen gos = new GameOverScreen();
+
+            gos.Location = new Point((form.Width - gos.Width) / 2, (form.Height - gos.Height) / 2);
+
+            form.Controls.Add(gos);
+            form.Controls.Remove(this);
+           // Form1.ChangeScreen(this, new EndScreen());
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
