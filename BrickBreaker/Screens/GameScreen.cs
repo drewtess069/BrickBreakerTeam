@@ -24,6 +24,7 @@ namespace BrickBreaker
 
         // Game values
         int lives;
+        int score = 0;
 
         // Paddle and Ball objects
         Paddle paddle;
@@ -44,8 +45,14 @@ namespace BrickBreaker
         {
             InitializeComponent();
             OnStart();
+            ScoreAndLives();
         }
 
+        public void ScoreAndLives()
+        {
+            livesLabel.Text = $"Lives: {lives}";
+            scoreLabel.Text = $"Score: {score}";
+        }
 
         public void OnStart()
         {
@@ -153,6 +160,7 @@ namespace BrickBreaker
             if (ball.BottomCollision(this))
             {
                 lives--;
+                ScoreAndLives(); //display updated lives count
 
                 // Moves the ball back to origin
                 ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
@@ -175,6 +183,8 @@ namespace BrickBreaker
                 if (ball.BlockCollision(b))
                 {
                     blocks.Remove(b);
+                    score++;
+                    ScoreAndLives(); // display updated score
 
                     if (blocks.Count == 0)
                     {
@@ -195,13 +205,7 @@ namespace BrickBreaker
         public void OnEnd()
         {
             // Goes to the game over screen
-            Form form = this.FindForm();
-            MenuScreen ps = new MenuScreen();
-            
-            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
-
-            form.Controls.Add(ps);
-            form.Controls.Remove(this);
+            Form1.ChangeScreen(this, new EndScreen());
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
