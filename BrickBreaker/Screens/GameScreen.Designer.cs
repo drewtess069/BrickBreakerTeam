@@ -38,6 +38,7 @@
             this.scoreLabel = new System.Windows.Forms.Label();
             this.scoreOutput = new System.Windows.Forms.Label();
             this.UXLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.life1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.life2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.life3)).BeginInit();
@@ -143,11 +144,23 @@
             this.UXLabel.Size = new System.Drawing.Size(1070, 60);
             this.UXLabel.TabIndex = 10;
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(507, 731);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 60);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "I I";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.scoreOutput);
             this.Controls.Add(this.life4);
             this.Controls.Add(this.life5);
@@ -183,5 +196,6 @@
         private System.Windows.Forms.Label scoreLabel;
         private System.Windows.Forms.Label scoreOutput;
         private System.Windows.Forms.Label UXLabel;
+        private System.Windows.Forms.Label label1;
     }
 }
