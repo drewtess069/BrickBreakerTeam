@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,26 +10,26 @@ using System.Windows.Forms;
 
 namespace BrickBreaker
 {
-    public partial class MenuScreen : UserControl
+    public partial class EndScreen : UserControl
     {
-        public MenuScreen()
+        public EndScreen()
         {
             InitializeComponent();
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
+        private void submitNameLabel_TextChanged(object sender, EventArgs e)
         {
-            Application.Exit();
+
         }
 
         private void playButton_Click(object sender, EventArgs e)
         {
-            Form1.ChangeScreen(this, new GameScreen());
+            Form1.ChangeScreen(this, new MenuScreen());
         }
 
-        private void designButton_Click(object sender, EventArgs e)
+        private void submitButton_Click(object sender, EventArgs e)
         {
-            Form1.ChangeScreen(this, new levelDesign());
+
         }
     }
 }

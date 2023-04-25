@@ -43,6 +43,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.life3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.life5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.life4)).BeginInit();
+
+            this.livesLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -142,6 +144,20 @@
             this.UXLabel.Name = "UXLabel";
             this.UXLabel.Size = new System.Drawing.Size(1070, 60);
             this.UXLabel.TabIndex = 10;
+
+            // 
+            // livesLabel
+            // 
+            this.livesLabel.AutoSize = true;
+            this.livesLabel.BackColor = System.Drawing.Color.Transparent;
+            this.livesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.livesLabel.ForeColor = System.Drawing.Color.White;
+            this.livesLabel.Location = new System.Drawing.Point(903, 50);
+            this.livesLabel.Name = "livesLabel";
+            this.livesLabel.Size = new System.Drawing.Size(75, 29);
+            this.livesLabel.TabIndex = 1;
+            this.livesLabel.Text = "Lives:";
+            this.livesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // GameScreen
             // 
@@ -156,6 +172,9 @@
             this.Controls.Add(this.life1);
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.UXLabel);
+
+            this.Controls.Add(this.livesLabel);
+            this.Controls.Add(this.scoreLabel);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameScreen";
@@ -169,6 +188,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.life5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.life4)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -183,5 +203,8 @@
         private System.Windows.Forms.Label scoreLabel;
         private System.Windows.Forms.Label scoreOutput;
         private System.Windows.Forms.Label UXLabel;
+
+        private System.Windows.Forms.Label scoreLabel;
+        private System.Windows.Forms.Label livesLabel;
     }
 }
