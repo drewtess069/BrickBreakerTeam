@@ -24,7 +24,7 @@ namespace BrickBreaker
 
         // Game values
         int lives;
-        int score;
+        public static int score;
 
         // Paddle and Ball objects
         Paddle paddle;
@@ -236,11 +236,11 @@ namespace BrickBreaker
         {
             // Goes to the game over screen
             Form form = this.FindForm();
-            MenuScreen ps = new MenuScreen();
-            
-            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+            GameOverScreen gos = new GameOverScreen();
 
-            form.Controls.Add(ps);
+            gos.Location = new Point((form.Width - gos.Width) / 2, (form.Height - gos.Height) / 2);
+
+            form.Controls.Add(gos);
             form.Controls.Remove(this);
         }
 
