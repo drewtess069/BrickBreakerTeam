@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrickBreaker.Screens
+namespace BrickBreaker
 {
     internal class HighScore
     {

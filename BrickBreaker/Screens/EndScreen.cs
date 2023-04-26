@@ -12,8 +12,9 @@ namespace BrickBreaker
 {
     public partial class EndScreen : UserControl
     {
-        string nickname;
-        //List<HighScore> leaderboard = new List<HighScore>();
+
+
+        List<HighScore> leaderboard = new List<HighScore>();
 
         public EndScreen()
         {
@@ -39,7 +40,19 @@ namespace BrickBreaker
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            
+            string nickname = submitNameLabel.Text;
+            int score = GameScreen.score;
+
+
+            HighScore newScore = new HighScore(nickname, score);
+            leaderboard.Add(newScore);
+
+
+            foreach (HighScore i in leaderboard)
+            {
+                leaderboardLabel.Text += $"\n{i.nickname} / {i.score}";
+            }
+
         }
     }
 }
