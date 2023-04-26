@@ -77,7 +77,7 @@
             this.endLabel.Name = "endLabel";
             this.endLabel.Size = new System.Drawing.Size(1067, 138);
             this.endLabel.TabIndex = 3;
-            this.endLabel.Text = "Your High Score:";
+            this.endLabel.Text = "Your High Score: ";
             this.endLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // submitNameLabel
@@ -98,7 +98,7 @@
             this.leaderboardLabel.ForeColor = System.Drawing.Color.White;
             this.leaderboardLabel.Location = new System.Drawing.Point(299, 223);
             this.leaderboardLabel.Name = "leaderboardLabel";
-            this.leaderboardLabel.Size = new System.Drawing.Size(466, 215);
+            this.leaderboardLabel.Size = new System.Drawing.Size(466, 295);
             this.leaderboardLabel.TabIndex = 5;
             this.leaderboardLabel.Text = "Name / Score";
             this.leaderboardLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;

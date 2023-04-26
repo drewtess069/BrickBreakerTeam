@@ -12,12 +12,22 @@ namespace BrickBreaker
 {
     public partial class EndScreen : UserControl
     {
+        string nickname;
+        //List<HighScore> leaderboard = new List<HighScore>();
+
         public EndScreen()
         {
             InitializeComponent();
+            endLabel.Text = "Your High Score: ";
+            LoadScore();
         }
 
-        private void submitNameLabel_TextChanged(object sender, EventArgs e)
+        private void LoadScore()
+        {
+            endLabel.Text += $"{GameScreen.score}";
+        }
+
+        private void submitNameLabel_TextChanged(object sender, EventArgs e) //remove 
         {
 
         }
@@ -29,7 +39,7 @@ namespace BrickBreaker
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
