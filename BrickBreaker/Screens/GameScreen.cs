@@ -41,7 +41,6 @@ namespace BrickBreaker
         Random rnd = new Random();
 
         // lists
-        List<Rectangle> paddleRectangles = new List<Rectangle>();
         List<PowerUp> powerUpList = new List<PowerUp>();
         List<Lazer> lazerList = new List<Lazer> ();
         int valu = 0;
