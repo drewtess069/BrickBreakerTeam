@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
+            this.testLabel = new System.Windows.Forms.Label();
+            this.lazerLabel = new System.Windows.Forms.Label();
             this.life1 = new System.Windows.Forms.PictureBox();
             this.life2 = new System.Windows.Forms.PictureBox();
             this.life3 = new System.Windows.Forms.PictureBox();
@@ -53,6 +55,25 @@
             this.gameTimer.Interval = 1;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
+            // testLabel
+            // 
+            this.testLabel.AutoSize = true;
+            this.testLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.testLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.testLabel.Location = new System.Drawing.Point(865, 192);
+            this.testLabel.Name = "testLabel";
+            this.testLabel.Size = new System.Drawing.Size(64, 25);
+            this.testLabel.TabIndex = 0;
+            this.testLabel.Text = "label1";
+            // 
+            // lazerLabel
+            // 
+            this.lazerLabel.AutoSize = true;
+            this.lazerLabel.Location = new System.Drawing.Point(942, 605);
+            this.lazerLabel.Name = "lazerLabel";
+            this.lazerLabel.Size = new System.Drawing.Size(0, 16);
+            this.lazerLabel.TabIndex = 1;
+
             // life1
             // 
             this.life1.BackColor = System.Drawing.Color.Black;
@@ -158,11 +179,16 @@
             this.livesLabel.TabIndex = 1;
             this.livesLabel.Text = "Lives:";
             this.livesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+
             // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+
+            this.Controls.Add(this.lazerLabel);
+            this.Controls.Add(this.testLabel);
+
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.scoreOutput);
             this.Controls.Add(this.life4);
@@ -175,6 +201,7 @@
 
             this.Controls.Add(this.livesLabel);
             this.Controls.Add(this.scoreLabel);
+
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameScreen";
@@ -195,6 +222,10 @@
         #endregion
 
         private System.Windows.Forms.Timer gameTimer;
+ 
+        private System.Windows.Forms.Label testLabel;
+        private System.Windows.Forms.Label lazerLabel;
+
         private System.Windows.Forms.PictureBox life1;
         private System.Windows.Forms.PictureBox life2;
         private System.Windows.Forms.PictureBox life3;
@@ -206,5 +237,6 @@
 
        // private System.Windows.Forms.Label scoreLabel;
         private System.Windows.Forms.Label livesLabel;
+
     }
 }
