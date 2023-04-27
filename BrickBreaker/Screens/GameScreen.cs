@@ -22,12 +22,16 @@ namespace BrickBreaker
         //player1 button control keys - DO NOT CHANGE
         Boolean leftArrowDown, rightArrowDown, spaceDown;
 
+
         // Game values
         int lives;
+        public static int score = 0;
+
 
         // Paddle and Ball objects
         Paddle paddle;
         Ball ball;
+        //bool ballMove = true;
 
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
@@ -55,13 +59,20 @@ namespace BrickBreaker
         {
             InitializeComponent();
             OnStart();
+            ScoreAndLives();
         }
 
+        public void ScoreAndLives()
+        {
+            livesLabel.Text = $"Lives: {lives}";
+            scoreLabel.Text = $"Score: {score}";
+        }
 
         public void OnStart()
         {
             //set life counter
             lives = 3;
+            score = 0;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -116,8 +127,11 @@ namespace BrickBreaker
                     rightArrowDown = true;
                     break;
                 case Keys.Space:
+
                     spaceDown = true;
                     break; 
+
+
                 default:
                     break;
             }
@@ -135,6 +149,7 @@ namespace BrickBreaker
                     rightArrowDown = false;
                     break;
                 case Keys.Space:
+
                     spaceDown = false;
                     break;
                 default:
@@ -164,10 +179,13 @@ namespace BrickBreaker
             if (ball.BottomCollision(this))
             {
                 lives--;
+                score -= 200;
+                ScoreAndLives(); //display updated lives count
 
                 // Moves the ball back to origin
                 ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
                 ball.y = (this.Height - paddle.height) - 85;
+                
 
                 if (lives == 0)
                 {
@@ -185,6 +203,10 @@ namespace BrickBreaker
                 if (ball.BlockCollision(b))
                 {
                     blocks.Remove(b);
+                    score++;
+                    ScoreAndLives(); // display updated score
+
+                    score += 100;
 
                     if (blocks.Count == 0)
                     {
@@ -274,6 +296,52 @@ namespace BrickBreaker
             }
 
 
+            //check and display lives
+            if (lives > 4)
+            {
+                life5.Visible = true;
+            }
+            else
+            {
+                life5.Visible = false;
+            }
+            if (lives > 3)
+            {
+                life4.Visible = true;
+            }
+            else
+            {
+                life4.Visible = false;
+            }
+            if (lives > 2)
+            {
+                life3.Visible = true;
+            }
+            else
+            {
+                life3.Visible = false;
+            }
+            if (lives > 1)
+            {
+                life2.Visible = true;
+            }
+            else
+            {
+                life2.Visible = false;
+            }
+            if (lives > 0)
+            {
+                life1.Visible = true;
+            }
+            else
+            {
+                life1.Visible = false;
+            }
+
+            //check and display score
+            scoreOutput.Text = $"{score}";
+
+
             //redraw the screen
             Refresh();
         }
@@ -282,12 +350,13 @@ namespace BrickBreaker
         {
             // Goes to the game over screen
             Form form = this.FindForm();
-            MenuScreen ps = new MenuScreen();
-            
-            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+            GameOverScreen gos = new GameOverScreen();
 
-            form.Controls.Add(ps);
+            gos.Location = new Point((form.Width - gos.Width) / 2, (form.Height - gos.Height) / 2);
+
+            form.Controls.Add(gos);
             form.Controls.Remove(this);
+           // Form1.ChangeScreen(this, new EndScreen());
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
