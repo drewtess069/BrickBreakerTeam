@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace BrickBreaker
 {
@@ -44,37 +45,40 @@ namespace BrickBreaker
         public void PaddleCollision(Paddle p)
         {
             Rectangle ballRec = new Rectangle(x, y, size, size);
+            List<Rectangle> paddleRectangles = new List<Rectangle>();
             Rectangle leftSideRec = new Rectangle(p.x - 3, p.y, 3, p.height);
             Rectangle rightSideRec = new Rectangle(p.x + p.width + 3, p.y, 3, p.height);
+
+            paddleRectangles.Add(leftSideRec);
+            paddleRectangles.Add(rightSideRec);
+
             Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
 
             #region Paddle side collision code
             if (canCollide == true)
             {
-                if (ballRec.IntersectsWith(paddleRec) && ballRec.Y <= 617)
+                if (ballRec.IntersectsWith(paddleRec))
                 {
                     ySpeed *= -1;
                     canCollide = false;
                 }
-                if (ballRec.IntersectsWith(leftSideRec))
-                {
-                    xSpeed *= -1;
-                    canCollide = false;
-                }
-                if (ballRec.IntersectsWith(rightSideRec))
-                {
-                    xSpeed *= -1;
-                    canCollide = false;
+                foreach (Rectangle r in paddleRectangles)
+                    {
+                    if (ballRec.IntersectsWith(r))
+                    {
+                        xSpeed *= -1;
+                        canCollide = false;
+                    }
                 }
             }
-            else if (canCollide == false)
+            if (canCollide == false)
             {
                 collisionTimer++;
             }
             #endregion
 
             #region Collision timer
-            if (collisionTimer >= 100)
+            if (collisionTimer >= 50)
             {
                 canCollide = true;
                 collisionTimer = 0;
