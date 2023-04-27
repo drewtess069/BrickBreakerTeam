@@ -26,6 +26,7 @@ namespace BrickBreaker
         // Game values
         int lives;
         public static int score = 0;
+        string state;
 
 
         // Paddle and Ball objects
@@ -71,6 +72,7 @@ namespace BrickBreaker
 
         public void OnStart()
         {
+            state = "playing";
             //set life counter
             lives = 3;
             score = 0;
@@ -92,7 +94,7 @@ namespace BrickBreaker
 
             // Creates a new ball
             int xSpeed = 6;
-            int ySpeed = 6;
+            int ySpeed = -6;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
@@ -186,7 +188,23 @@ namespace BrickBreaker
                 // Moves the ball back to origin
                 ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
                 ball.y = (this.Height - paddle.height) - 85;
-                
+
+                #region work in progres: pausing game and playing again with spacebar
+                ////if (state == "startOff" && spacebarDown == true)
+                ////{
+                ////    state = "playing";
+                ////}
+
+                ////if (state == "playing")
+                ////{
+                ////    gameTimer.Enabled = true;
+                ////}
+                ////else if (state == "startOff")
+                ////{
+                ////    gameTimer.Enabled = false;
+                ////}
+                #endregion
+
 
                 if (lives == 0)
                 {
