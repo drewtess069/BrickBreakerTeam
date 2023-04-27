@@ -20,7 +20,7 @@ namespace BrickBreaker
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown;
+        Boolean leftArrowDown, rightArrowDown, spaceDown;
 
         // Game values
         int lives;
@@ -37,6 +37,19 @@ namespace BrickBreaker
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
 
+        // random
+        Random rnd = new Random();
+
+        // lists
+        List<Rectangle> paddleRectangles = new List<Rectangle>();
+        List<PowerUp> powerUpList = new List<PowerUp>();
+        List<Lazer> lazerList = new List<Lazer> ();
+        int valu = 0;
+
+        int timeOne;
+        int timeTwo;
+        int alpha = 255;
+        bool inUse;
         #endregion
 
         public GameScreen()
@@ -103,6 +116,9 @@ namespace BrickBreaker
                 case Keys.Right:
                     rightArrowDown = true;
                     break;
+                case Keys.Space:
+                    spaceDown = true;
+                    break; 
                 default:
                     break;
             }
@@ -118,6 +134,9 @@ namespace BrickBreaker
                     break;
                 case Keys.Right:
                     rightArrowDown = false;
+                    break;
+                case Keys.Space:
+                    spaceDown = false;
                     break;
                 default:
                     break;
@@ -174,9 +193,87 @@ namespace BrickBreaker
                         OnEnd();
                     }
 
+                    valu = rnd.Next(0, 3); 
+                    if (valu == 2)
+                    {
+                        PowerUp newPowerUp = new PowerUp(0, 0, 0, 3, null, null, true, 12, 12);
+                        newPowerUp.newBall(b.x, b.y, b.width, b.height, lazerList);
+                        powerUpList.Add(newPowerUp);    
+                    }
                     break;
                 }
             }
+            testLabel.Text = $"{valu}"; 
+
+            //powerup collision, movement and consequence
+            foreach (PowerUp p in powerUpList)
+            {
+                p.move();
+                p.Collision(paddleRectangles);
+
+                if (p.active == false)
+                {
+                    if (p.type == "longPaddle")
+                    {
+                        int paddleLenght = 20;
+                        if (paddle.x < 10)
+                        {
+                            paddle.x = 0 + paddleLenght / 2;
+                        }
+                        else if (paddle.x > this.Width - paddle.width - paddleLenght / 2)
+                        {
+                            paddle.x = this.Width - paddle.width - paddleLenght / 2;
+                        }
+                        paddle.width += paddleLenght;
+                        paddle.x -= paddleLenght / 2;
+                    }
+                    else if (p.type == "slowBall")
+                    {
+                        ball.xSpeed /= 2;
+                        ball.ySpeed /= 2;
+                    }
+                    else if (p.type == "newLife")
+                    {
+                        lives++;
+                    }
+                    else if (p.type == "lazer")
+                    {
+                        Lazer newLazer = new Lazer(paddleRectangles[1].X - 10, paddleRectangles[1].Y, 20, paddleRectangles[1].Height, 3, false);
+                        lazerList.Add(newLazer);     
+                    }
+                }
+            }
+
+            //lazer mechanics
+            foreach(Lazer l in lazerList)
+            {
+                if (inUse == true && alpha != 0)
+                {
+                    alpha -= 15;
+                }
+                else if (inUse == true && alpha == 0)
+                {
+                    inUse = false;
+                }
+
+                if (alpha <= 255 && inUse == false)
+                {
+                    alpha += 5;
+                    l.move(paddleRectangles);
+                }
+                else if (alpha == 255 && inUse == false)
+                {
+                    l.recharged = true;
+                    l.move(paddleRectangles);
+                }
+
+                if (spaceDown == true && l.recharged == true && l.y <= 0)
+                {
+                    l.fire(blocks, paddleRectangles);
+                    inUse = true;
+                }
+            }
+
 
             //redraw the screen
             Refresh();
@@ -208,6 +305,12 @@ namespace BrickBreaker
 
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+
+            //draws powerUps
+            foreach (PowerUp p in powerUpList)
+            {
+                e.Graphics.FillRectangle(ballBrush, p.x, p.y, p.width, p.height);
+            }
         }
     }
 }
