@@ -47,6 +47,7 @@ namespace BrickBreaker
         // lists
         List<PowerUp> powerUpList = new List<PowerUp>();
         List<Lazer> lazerList = new List<Lazer> ();
+        List<Rectangle> paddleRectangles = new List<Rectangle> ();
         int valu = 0;
 
         int timeOne;
