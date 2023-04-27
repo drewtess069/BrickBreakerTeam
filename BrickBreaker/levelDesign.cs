@@ -19,15 +19,6 @@ namespace BrickBreaker
 
         bool hpSelect = false;
         int hp;
-        bool leftArrowDown;
-        bool rightArrowDown;
-        bool upArrowDown;
-        bool downArrowDown;
-
-        bool moveRight;
-        bool moveLeft;
-        bool moveUp;
-        bool moveDown;
 
         public levelDesign()
         {
@@ -84,8 +75,7 @@ namespace BrickBreaker
                 Rectangle brick = new Rectangle(e.X, e.Y, 50, 25);
                 bricks.Add(brick);
 
-                Block newBlock = new Block(brick.X, brick.Y, hp, textbox.BackColor);
-                blocks.Add(newBlock);
+                
 
 
                 for (int i = 0; i < bricks.Count - 1; i++)
@@ -109,33 +99,79 @@ namespace BrickBreaker
                 hpSelect = true;
             }
         }
-/*
+
         public void saveLevel()
         {
-            XmlWriter writer = XmlWriter.Create("Resources/LevelDesignXML.xml", null);
+            XmlWriter writer = XmlWriter.Create("Resources/LevelDesignXML.xml");
 
-            writer.WriteStartElement("Bricks");
+            writer.WriteStartElement("Level");
 
-            foreach (Block b in blocks)
+            foreach (TextBox t in textBoxes)
             {
-                {
-                    writer.WriteStartElement("Brick");
 
-                    writer.WriteElementString("x", Convert.ToString(b.x));
-                    writer.WriteElementString("y", Convert.ToString(b.y));
-                    writer.WriteElementString("hp", Convert.ToString(b.hp));
-                    writer.WriteElementString("colour", Convert.ToString(b.colour));
+                writer.WriteStartElement("Brick");
 
-                    writer.WriteEndElement();
-                }
+                writer.WriteElementString("x", Convert.ToString(t.Location.X));
+                writer.WriteElementString("y", Convert.ToString(t.Location.Y));
+                writer.WriteElementString("hp", Convert.ToString(t.Text));
+                writer.WriteElementString("colour", Convert.ToString(t.BackColor));
+
                 writer.WriteEndElement();
-                writer.Close();
+            }
+            writer.Close();
+
+            textBoxes.Clear();
+            Form1.ChangeScreen(this, new MenuScreen());
+        }
+
+        public void loadLevel()
+        {
+            string x, y, hp, colourString;
+
+            XmlReader reader = XmlReader.Create("Resources/employeeXML.xml");
+
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Text)
+                {
+                    x = reader.ReadString();
+                    reader.ReadToNextSibling("y");
+                    y = reader.ReadString();
+
+                    reader.ReadToNextSibling("hp");
+                    hp = reader.ReadString();
+
+                    reader.ReadToNextSibling("colour");
+                    colourString = reader.ReadString();
+
+                    Color colour = Color.FromName(colourString);
+
+                    Block newBlock = new Block(Convert.ToInt16(x), Convert.ToInt16(y), Convert.ToInt16(hp), colour);
+                    blocks.Add(newBlock);
+                }
+            }
+            reader.Close();
+
+            Graphics g = this.CreateGraphics();
+
+            Pen blackPen = new Pen(Color.Black);
+
+            foreach(Block b in blocks)
+            {
+                Rectangle rectangle = new Rectangle(b.x, b.y, 50, 25);
+
+                Color blockColour = b.colour;
+
+                SolidBrush blockBrush = new SolidBrush(blockColour);
+
+                g.DrawRectangle(blackPen, rectangle);
+                g.FillRectangle(blockBrush, rectangle);
             }
         }
-*/
+
         private void saveButton_Click(object sender, EventArgs e)
         {
-        //    saveLevel();
+            saveLevel();
         }
     }
 }

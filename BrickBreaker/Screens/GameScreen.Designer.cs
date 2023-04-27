@@ -204,7 +204,7 @@
         private System.Windows.Forms.Label scoreOutput;
         private System.Windows.Forms.Label UXLabel;
 
-        private System.Windows.Forms.Label scoreLabel;
+       // private System.Windows.Forms.Label scoreLabel;
         private System.Windows.Forms.Label livesLabel;
     }
 }
