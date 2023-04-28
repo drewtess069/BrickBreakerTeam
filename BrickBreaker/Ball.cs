@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace BrickBreaker
 {
     public class Ball
     {
-        public int x, y, xSpeed, ySpeed, size;
+        public int x, y, size;
+        public float xSpeed, ySpeed;
         public Color colour;
         public static Random rand = new Random();
         public bool canCollide = true;
@@ -24,8 +26,8 @@ namespace BrickBreaker
 
         public void Move()
         {
-            x = x + xSpeed;
-            y = y + ySpeed;
+            x = x + Convert.ToInt32(xSpeed);
+            y = y + Convert.ToInt32(ySpeed);
         }
 
         public bool BlockCollision(Block b)
@@ -44,41 +46,72 @@ namespace BrickBreaker
         public void PaddleCollision(Paddle p)
         {
             Rectangle ballRec = new Rectangle(x, y, size, size);
-            Rectangle leftSideRec = new Rectangle(p.x - 3, p.y, 3, p.height);
-            Rectangle rightSideRec = new Rectangle(p.x + p.width + 3, p.y, 3, p.height);
-            Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
+            List<Rectangle> paddleRectangles = new List<Rectangle>();
+            Rectangle leftSideRec = new Rectangle(p.x - 3, p.y, 8, p.height);
+            Rectangle rightSideRec = new Rectangle(p.x + p.width - 2, p.y, 8, p.height);
+
+            paddleRectangles.Add(leftSideRec);
+            paddleRectangles.Add(rightSideRec);
+
+            Rectangle paddleRec = new Rectangle(p.x + 5, p.y, p.width - 10, p.height);
 
             #region Paddle side collision code
-            if (canCollide == true)
+            //if (canCollide == true)
+            //{
+            if (ballRec.IntersectsWith(leftSideRec))
             {
-                if (ballRec.IntersectsWith(paddleRec))
+                if (xSpeed > 0) 
                 {
-                    ySpeed *= -1;
-                    canCollide = false;
+                    xSpeed *= -1.2f;
+                    ySpeed *= 0.8f;
                 }
-                if (ballRec.IntersectsWith(leftSideRec))
+                else
                 {
-                    xSpeed *= -1;
-                    canCollide = false;
-                }
-                if (ballRec.IntersectsWith(rightSideRec))
-                {
-                    xSpeed *= -1;
-                    canCollide = false;
+                    ySpeed *= -1.4f;
+                    xSpeed *= 0.8f;
                 }
             }
-            else if (canCollide == false)
+            else if (ballRec.IntersectsWith(rightSideRec)) 
             {
-                collisionTimer++;
+                if (xSpeed < 0)
+                {
+                    xSpeed *= -1.2f;
+                    ySpeed *= 0.8f;
+                }
+                else
+                {
+                    ySpeed *= -1.2f;
+                    xSpeed *= 0.8f;
+                }
             }
-            #endregion
+            else if (ballRec.IntersectsWith(paddleRec))
+            {
+                ySpeed *= -1;
+                canCollide = false;
+            }
 
-            #region Collision timer
-            if (collisionTimer >= 100)
-            {
-                canCollide = true;
-                collisionTimer = 0;
-            }
+
+            //foreach (Rectangle r in paddleRectangles)
+            //    {
+            //    if (ballRec.IntersectsWith(r))
+            //    {
+            //        xSpeed *= -1;
+            //        canCollide = false;
+            //    }
+            //}
+            //}
+            //if (canCollide == false)
+            //{
+            //    collisionTimer++;
+            //}
+            //#endregion
+
+            //#region Collision timer
+            //if (collisionTimer >= 50)
+            //{
+            //    canCollide = true;
+            //    collisionTimer = 0;
+            //}
             #endregion
         }
 

@@ -78,12 +78,15 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+
+    <Compile Include="Lazer.cs" />
     <Compile Include="GameOverScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GameOverScreen.Designer.cs">
       <DependentUpon>GameOverScreen.cs</DependentUpon>
     </Compile>
+
     <Compile Include="levelDesign.cs">
       <SubType>UserControl</SubType>
     </Compile>

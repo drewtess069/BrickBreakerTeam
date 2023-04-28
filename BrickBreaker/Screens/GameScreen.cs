@@ -20,15 +20,17 @@ namespace BrickBreaker
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown, spacebarDown;
+        Boolean leftArrowDown, rightArrowDown, spaceDown;
+
 
         // Game values
         int lives;
         public static int score = 0;
+        string state;
 
 
         // Paddle and Ball objects
-        Paddle paddle;
+        
         Ball ball;
         //bool ballMove = true;
 
@@ -40,6 +42,32 @@ namespace BrickBreaker
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
 
+        // random
+        Random rnd = new Random();
+
+        // lists
+        List<PowerUp> powerUpList = new List<PowerUp>();
+        List<Lazer> lazerList = new List<Lazer> ();
+        List<Rectangle> paddleRectangles = new List<Rectangle> ();
+
+
+        public Paddle paddle;
+        public Rectangle midPaddle;
+        public Rectangle leftSideRec;
+        public Rectangle rightSideRec;
+
+
+        int valu = 0;
+
+        int xSpeed;
+        int ySpeed;
+
+        int timeOne;
+        int timeTwo;
+        int alpha = 255;
+        bool inUse;
+
+        bool ballDown = false;
         #endregion
 
         public GameScreen()
@@ -57,6 +85,7 @@ namespace BrickBreaker
 
         public void OnStart()
         {
+            state = "playing";
             //set life counter
             lives = 3;
             score = 0;
@@ -70,22 +99,34 @@ namespace BrickBreaker
             int paddleX = ((this.Width / 2) - (paddleWidth / 2));
             int paddleY = (this.Height - paddleHeight) - 60;
             int paddleSpeed = 8;
+
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
+
+            midPaddle = new Rectangle(paddle.x, paddle.y, paddle.width, paddle.height); 
+            leftSideRec = new Rectangle(paddle.x - 3, paddle.y, 3, paddle.height);
+            rightSideRec = new Rectangle(paddle.x + paddle.width + 3, paddle.y, 3, paddle.height);
+
+            paddleRectangles.Add(leftSideRec);
+            paddleRectangles.Add(midPaddle);
+            paddleRectangles.Add(rightSideRec);
 
             // setup starting ball values
             int ballX = this.Width / 2 - 10;
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            int xSpeed = 6;
-            int ySpeed = -6;
+
+             xSpeed = 6;
+             ySpeed = -6;
+
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
+
             #region Creates blocks for generic level. Need to replace with code that loads levels.
-            
+
             //TODO - replace all the code in this region eventually with code that loads levels from xml files
-            
+
             blocks.Clear();
             int x = 10;
 
@@ -97,6 +138,7 @@ namespace BrickBreaker
             }
 
             #endregion
+
 
             // start the game engine loop
             gameTimer.Enabled = true;
@@ -114,8 +156,11 @@ namespace BrickBreaker
                     rightArrowDown = true;
                     break;
                 case Keys.Space:
-                    spacebarDown = true;
-                    break;
+
+                    spaceDown = true;
+                    break; 
+
+
                 default:
                     break;
             }
@@ -133,7 +178,8 @@ namespace BrickBreaker
                     rightArrowDown = false;
                     break;
                 case Keys.Space:
-                    spacebarDown= false;
+
+                    spaceDown = false;
                     break;
                 default:
                     break;
@@ -142,6 +188,15 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            if(ball.ySpeed > 0)
+            {
+                ballDown = true;
+            }
+            else
+            {
+                ballDown = false;
+            }
+
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -167,8 +222,24 @@ namespace BrickBreaker
 
                 // Moves the ball back to origin
                 ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-                ball.y = (this.Height - paddle.height) - 80;
-                
+
+                ball.y = (this.Height - paddle.height) - 85;
+
+                #region work in progres: pausing game and playing again with spacebar
+                ////if (state == "startOff" && spacebarDown == true)
+                ////{
+                ////    state = "playing";
+                ////}
+
+                ////if (state == "playing")
+                ////{
+                ////    gameTimer.Enabled = true;
+                ////}
+                ////else if (state == "startOff")
+                ////{
+                ////    gameTimer.Enabled = false;
+                ////}
+                #endregion
 
                 if (lives == 0)
                 {
@@ -178,7 +249,10 @@ namespace BrickBreaker
             }
 
             // Check for collision of ball with paddle, (incl. paddle movement)
-            ball.PaddleCollision(paddle);
+            if (ballDown == true)
+            {
+                ball.PaddleCollision(paddle);
+            }
 
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
@@ -196,9 +270,89 @@ namespace BrickBreaker
                         OnEnd();
                     }
 
+                    valu = rnd.Next(0, 3); 
+                    if (valu == 2)
+                    {
+                        PowerUp newPowerUp = new PowerUp(0, 0, 0, 3, null, null, true, 12, 12);
+                        newPowerUp.newBall(b.x, b.y, b.width, b.height, lazerList);
+                        powerUpList.Add(newPowerUp);    
+                    }
                     break;
                 }
             }
+
+            //powerup collision, movement and consequence
+            foreach (PowerUp p in powerUpList)
+            {
+                p.move();
+                p.Collision(paddleRectangles);
+
+                if (p.active == false)
+                {
+                    testLabel.Text = "true";
+
+
+                    if (p.type == "longPaddle")
+                    {
+                        int paddleLenght = 20;
+                        if (paddle.x < 10)
+                        {
+                            paddle.x = 0 + paddleLenght / 2;
+                        }
+                        else if (paddle.x > this.Width - paddle.width - paddleLenght / 2)
+                        {
+                            paddle.x = this.Width - paddle.width - paddleLenght / 2;
+                        }
+                        paddle.width += paddleLenght;
+                        paddle.x -= paddleLenght / 2;
+                    }
+                    else if (p.type == "slowBall")
+                    {
+                        ball.xSpeed /= 2;
+                        ball.ySpeed /= 2;
+                    }
+                    else if (p.type == "newLife")
+                    {
+                        lives++;
+                    }
+                    else if (p.type == "lazer")
+                    {
+                        Lazer newLazer = new Lazer(paddleRectangles[1].X - 10, paddleRectangles[1].Y, 20, paddleRectangles[1].Height, 3, false);
+                        lazerList.Add(newLazer);     
+                    }
+                }
+            }
+
+            //lazer mechanics
+            foreach(Lazer l in lazerList)
+            {
+                if (inUse == true && alpha != 0)
+                {
+                    alpha -= 15;
+                }
+                else if (inUse == true && alpha == 0)
+                {
+                    inUse = false;
+                }
+
+                if (alpha <= 255 && inUse == false)
+                {
+                    alpha += 5;
+                    l.move(paddleRectangles);
+                }
+                else if (alpha == 255 && inUse == false)
+                {
+                    l.recharged = true;
+                    l.move(paddleRectangles);
+                }
+
+                if (spaceDown == true && l.recharged == true && l.y <= 0)
+                {
+                    l.fire(blocks, paddleRectangles);
+                    inUse = true;
+                }
+            }
+
 
             //check and display lives
             if (lives > 4)
@@ -318,7 +472,7 @@ namespace BrickBreaker
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             // Draws paddle
-            paddleBrush.Color = paddle.colour;
+            paddleBrush.Color = Color.White;
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
 
             // Draws blocks
@@ -329,6 +483,12 @@ namespace BrickBreaker
 
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+
+            //draws powerUps
+            foreach (PowerUp p in powerUpList)
+            {
+                e.Graphics.FillRectangle(ballBrush, p.x, p.y, p.width, p.height);
+            }
         }
     }
 }
