@@ -30,7 +30,7 @@ namespace BrickBreaker
 
 
         // Paddle and Ball objects
-        Paddle paddle;
+        
         Ball ball;
         //bool ballMove = true;
 
@@ -49,6 +49,14 @@ namespace BrickBreaker
         List<PowerUp> powerUpList = new List<PowerUp>();
         List<Lazer> lazerList = new List<Lazer> ();
         List<Rectangle> paddleRectangles = new List<Rectangle> ();
+
+
+        public Paddle paddle;
+        public Rectangle midPaddle;
+        public Rectangle leftSideRec;
+        public Rectangle rightSideRec;
+
+
         int valu = 0;
 
         int timeOne;
@@ -86,7 +94,16 @@ namespace BrickBreaker
             int paddleX = ((this.Width / 2) - (paddleWidth / 2));
             int paddleY = (this.Height - paddleHeight) - 60;
             int paddleSpeed = 8;
+
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
+
+            midPaddle = new Rectangle(paddle.x, paddle.y, paddle.width, paddle.height); 
+            leftSideRec = new Rectangle(paddle.x - 3, paddle.y, 3, paddle.height);
+            rightSideRec = new Rectangle(paddle.x + paddle.width + 3, paddle.y, 3, paddle.height);
+
+            paddleRectangles.Add(leftSideRec);
+            paddleRectangles.Add(midPaddle);
+            paddleRectangles.Add(rightSideRec);
 
             // setup starting ball values
             int ballX = this.Width / 2 - 10;
@@ -98,10 +115,11 @@ namespace BrickBreaker
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
+
             #region Creates blocks for generic level. Need to replace with code that loads levels.
-            
+
             //TODO - replace all the code in this region eventually with code that loads levels from xml files
-            
+
             blocks.Clear();
             int x = 10;
 
@@ -113,6 +131,7 @@ namespace BrickBreaker
             }
 
             #endregion
+
 
             // start the game engine loop
             gameTimer.Enabled = true;
@@ -243,7 +262,6 @@ namespace BrickBreaker
                     break;
                 }
             }
-            testLabel.Text = $"{valu}"; 
 
             //powerup collision, movement and consequence
             foreach (PowerUp p in powerUpList)
@@ -253,6 +271,9 @@ namespace BrickBreaker
 
                 if (p.active == false)
                 {
+                    testLabel.Text = "true";
+
+
                     if (p.type == "longPaddle")
                     {
                         int paddleLenght = 20;
@@ -381,7 +402,7 @@ namespace BrickBreaker
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             // Draws paddle
-            paddleBrush.Color = paddle.colour;
+            paddleBrush.Color = Color.White;
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
 
             // Draws blocks
