@@ -51,10 +51,15 @@ namespace BrickBreaker
         List<Rectangle> paddleRectangles = new List<Rectangle> ();
         int valu = 0;
 
+        int xSpeed;
+        int ySpeed;
+
         int timeOne;
         int timeTwo;
         int alpha = 255;
         bool inUse;
+
+        bool ballDown = false;
         #endregion
 
         public GameScreen()
@@ -93,8 +98,8 @@ namespace BrickBreaker
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            int xSpeed = 6;
-            int ySpeed = -6;
+             xSpeed = 6;
+             ySpeed = -6;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
@@ -162,6 +167,15 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            if(ball.ySpeed > 0)
+            {
+                ballDown = true;
+            }
+            else
+            {
+                ballDown = false;
+            }
+
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -214,7 +228,10 @@ namespace BrickBreaker
             }
 
             // Check for collision of ball with paddle, (incl. paddle movement)
-            ball.PaddleCollision(paddle);
+            if (ballDown == true)
+            {
+                ball.PaddleCollision(paddle);
+            }
 
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
