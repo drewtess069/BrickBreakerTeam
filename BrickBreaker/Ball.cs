@@ -51,7 +51,7 @@ namespace BrickBreaker
             #region Paddle side collision code
             if (canCollide == true)
             {
-                if (ballRec.IntersectsWith(paddleRec) && ballRec.Y <= 617)
+                if (ballRec.IntersectsWith(paddleRec))
                 {
                     ySpeed *= -1;
                     canCollide = false;

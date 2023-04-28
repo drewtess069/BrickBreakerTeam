@@ -105,8 +105,15 @@ namespace BrickBreaker
         {
             if (hpInput != null)
             {
-                hp = Convert.ToInt32(hpInput.Text);
-                hpSelect = true;
+                try
+                {
+                    hp = Convert.ToInt32(hpInput.Text);
+                    hpSelect = true;
+                }
+                catch
+                {
+                    hpInput.Text = "ERROR";
+                }
             }
         }
 /*
@@ -136,6 +143,18 @@ namespace BrickBreaker
         private void saveButton_Click(object sender, EventArgs e)
         {
         //    saveLevel();
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            //return to MenuScreen
+            MenuScreen ms = new MenuScreen();
+            Form form = this.FindForm();
+
+            form.Controls.Add(ms);
+            form.Controls.Remove(this);
+
+            ms.Location = new Point((form.Width - ms.Width) / 2, (form.Height - ms.Height) / 2);
         }
     }
 }
