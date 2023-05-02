@@ -78,7 +78,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Lazer.cs" />
     <Compile Include="GameOverScreen.cs">
       <SubType>UserControl</SubType>
@@ -86,7 +85,6 @@
     <Compile Include="GameOverScreen.Designer.cs">
       <DependentUpon>GameOverScreen.cs</DependentUpon>
     </Compile>
-
     <Compile Include="levelDesign.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -168,6 +166,37 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ezgif.com-webp-to-png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tetris.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\donkeykong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level1XML.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level2XML.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level3XML.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level4XML.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level5XML.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
