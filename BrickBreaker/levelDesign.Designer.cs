@@ -41,8 +41,9 @@
             // 
             // hpInput
             // 
-            this.hpInput.Location = new System.Drawing.Point(387, 506);
-            this.hpInput.Margin = new System.Windows.Forms.Padding(2);
+            this.hpInput.Location = new System.Drawing.Point(478, 639);
+            this.hpInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+
             this.hpInput.Name = "hpInput";
             this.hpInput.Size = new System.Drawing.Size(73, 20);
             this.hpInput.TabIndex = 0;
@@ -50,8 +51,9 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(360, 530);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(448, 673);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 73);
             this.button1.TabIndex = 1;
@@ -62,8 +64,9 @@
             // saveButton
             // 
             this.saveButton.BackColor = System.Drawing.SystemColors.Control;
-            this.saveButton.Location = new System.Drawing.Point(699, 530);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(2);
+            this.saveButton.Location = new System.Drawing.Point(709, 673);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(127, 73);
             this.saveButton.TabIndex = 2;
@@ -74,8 +77,9 @@
             // loadButton
             // 
             this.loadButton.BackColor = System.Drawing.SystemColors.Control;
-            this.loadButton.Location = new System.Drawing.Point(27, 530);
-            this.loadButton.Margin = new System.Windows.Forms.Padding(2);
+            this.loadButton.Location = new System.Drawing.Point(56, 673);
+            this.loadButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(127, 73);
             this.loadButton.TabIndex = 3;
@@ -84,6 +88,16 @@
             // 
             // level1Button
             // 
+            this.exitButton.BackColor = System.Drawing.Color.LightSalmon;
+            this.exitButton.Location = new System.Drawing.Point(871, 673);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(141, 73);
+            this.exitButton.TabIndex = 4;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+
             this.level1Button.Location = new System.Drawing.Point(27, 441);
             this.level1Button.Name = "level1Button";
             this.level1Button.Size = new System.Drawing.Size(87, 29);
@@ -150,7 +164,8 @@
             this.Controls.Add(this.hpInput);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "levelDesign";
-            this.Size = new System.Drawing.Size(854, 640);
+            this.Size = new System.Drawing.Size(1067, 800);
+
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.levelDesign_MouseClick);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.levelDesign_PreviewKeyDown);
             this.ResumeLayout(false);
