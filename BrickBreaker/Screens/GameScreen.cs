@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace BrickBreaker
 {
@@ -80,7 +81,7 @@ namespace BrickBreaker
         public void ScoreAndLives()
         {
             livesLabel.Text = $"Lives: {lives}";
-            scoreOutput.Text = $"Score: {score}";
+            scoreLabel.Text = $"Score: {score}";
         }
 
         public void OnStart()
@@ -115,10 +116,8 @@ namespace BrickBreaker
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-
              xSpeed = 6;
              ySpeed = -6;
-
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
@@ -181,6 +180,10 @@ namespace BrickBreaker
 
                     spaceDown = false;
                     break;
+                case Keys.Escape:
+                    EventArgs f = new EventArgs();
+                    pauseButton_Click(sender, f);
+                    break;
                 default:
                     break;
             }
@@ -222,7 +225,6 @@ namespace BrickBreaker
 
                 // Moves the ball back to origin
                 ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-
                 ball.y = (this.Height - paddle.height) - 85;
 
                 #region work in progres: pausing game and playing again with spacebar
@@ -240,6 +242,7 @@ namespace BrickBreaker
                 ////    gameTimer.Enabled = false;
                 ////}
                 #endregion
+
 
                 if (lives == 0)
                 {
@@ -260,6 +263,7 @@ namespace BrickBreaker
                 if (ball.BlockCollision(b))
                 {
                     blocks.Remove(b);
+                    score++;
                     ScoreAndLives(); // display updated score
 
                     score += 100;
@@ -411,29 +415,34 @@ namespace BrickBreaker
 
             menuButton.Visible = true;
             pauseMenuLabel.Visible = true;
+            exitButton.Visible = true;
+
+            menuButton.Enabled = true;
+            exitButton.Enabled = true;
+
             pauseMenuLabel.Text = $"\nGAME PAUSED\n\nLevel [level]\n{lives} lives left\n\n\n\nCLICK TO RETURN";
             Refresh();
         }
 
-        private void pauseMenuLabel_Click(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
         {
-            //resume the game
-            gameTimer.Enabled = true;
-
-            menuButton.Visible = false;
-            pauseMenuLabel.Visible = false;
+            Application.Exit();
         }
 
         private void menuButton_Click(object sender, EventArgs e)
         {
-            //return to MenuScreen
-            MenuScreen ms = new MenuScreen();
-            Form form = this.FindForm();
+            //pause the game
+            gameTimer.Enabled = true;
 
-            form.Controls.Add(ms);
-            form.Controls.Remove(this);
+            menuButton.Visible = false;
+            pauseMenuLabel.Visible = false;
+            exitButton.Visible = false;
 
-            ms.Location = new Point((form.Width - ms.Width) / 2, (form.Height - ms.Height) / 2);
+            menuButton.Enabled = false;
+            exitButton.Enabled = false;
+
+            pauseMenuLabel.Text = $"\nGAME PAUSED\n\nLevel [level]\n{lives} lives left\n\n\n\nCLICK TO RETURN";
+            Refresh();
         }
 
         public void OnEnd()
@@ -446,6 +455,7 @@ namespace BrickBreaker
 
             form.Controls.Add(gos);
             form.Controls.Remove(this);
+           // Form1.ChangeScreen(this, new EndScreen());
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)

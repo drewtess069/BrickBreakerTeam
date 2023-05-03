@@ -32,6 +32,7 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.designButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+
             this.SuspendLayout();
             // 
             // playButton
@@ -43,9 +44,10 @@
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playButton.ForeColor = System.Drawing.Color.White;
-            this.playButton.Location = new System.Drawing.Point(400, 217);
+
+            this.playButton.Location = new System.Drawing.Point(311, 154);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(242, 96);
+            this.playButton.Size = new System.Drawing.Size(193, 77);
             this.playButton.TabIndex = 0;
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = false;
@@ -58,13 +60,26 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Location = new System.Drawing.Point(400, 319);
+
+            this.exitButton.Location = new System.Drawing.Point(311, 237);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(242, 96);
+            this.exitButton.Size = new System.Drawing.Size(193, 77);
             this.exitButton.TabIndex = 1;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Magneto", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.LightSalmon;
+            this.label1.Location = new System.Drawing.Point(8, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(838, 98);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "BRICK BREAKER ARCADE";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // designButton
             // 
@@ -74,10 +89,12 @@
             this.designButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.designButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.designButton.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.designButton.Location = new System.Drawing.Point(400, 465);
+
             this.designButton.Margin = new System.Windows.Forms.Padding(4);
+
+            this.designButton.Location = new System.Drawing.Point(313, 354);
             this.designButton.Name = "designButton";
-            this.designButton.Size = new System.Drawing.Size(242, 118);
+            this.designButton.Size = new System.Drawing.Size(193, 95);
             this.designButton.TabIndex = 3;
             this.designButton.Text = "Level Design";
             this.designButton.UseVisualStyleBackColor = false;
@@ -95,10 +112,10 @@
             this.label1.Text = "BRICK BREAKER ARCADE";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+
             // MenuScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::BrickBreaker.Properties.Resources.pxwiv;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -106,9 +123,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuScreen";
             this.Size = new System.Drawing.Size(1067, 677);
+
             this.ResumeLayout(false);
 
         }
@@ -119,5 +136,6 @@
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button designButton;
         private System.Windows.Forms.Label label1;
+
     }
 }
