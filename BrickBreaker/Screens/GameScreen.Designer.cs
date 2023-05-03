@@ -208,11 +208,12 @@
             // 
             // pauseMenuLabel
             // 
+            this.pauseMenuLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pauseMenuLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pauseMenuLabel.ForeColor = System.Drawing.Color.White;
             this.pauseMenuLabel.Location = new System.Drawing.Point(258, 114);
             this.pauseMenuLabel.Name = "pauseMenuLabel";
-            this.pauseMenuLabel.Size = new System.Drawing.Size(324, 244);
+            this.pauseMenuLabel.Size = new System.Drawing.Size(340, 326);
             this.pauseMenuLabel.TabIndex = 12;
             this.pauseMenuLabel.Text = "Game Paused";
             this.pauseMenuLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
