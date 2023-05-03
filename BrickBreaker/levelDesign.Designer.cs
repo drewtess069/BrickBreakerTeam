@@ -88,7 +88,7 @@
             // 
             // level1Button
             // 
-            this.exitButton.BackColor = System.Drawing.Color.LightSalmon;
+            /*this.exitButton.BackColor = System.Drawing.Color.LightSalmon;
             this.exitButton.Location = new System.Drawing.Point(871, 673);
             this.exitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.exitButton.Name = "exitButton";
@@ -96,7 +96,7 @@
             this.exitButton.TabIndex = 4;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click); */
 
             this.level1Button.Location = new System.Drawing.Point(27, 441);
             this.level1Button.Name = "level1Button";
