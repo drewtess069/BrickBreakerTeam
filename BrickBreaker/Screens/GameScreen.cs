@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace BrickBreaker
 {
@@ -178,6 +179,10 @@ namespace BrickBreaker
                 case Keys.Space:
 
                     spaceDown = false;
+                    break;
+                case Keys.Escape:
+                    EventArgs f = new EventArgs();
+                    pauseButton_Click(sender, f);
                     break;
                 default:
                     break;
@@ -400,6 +405,43 @@ namespace BrickBreaker
 
 
             //redraw the screen
+            Refresh();
+        }
+
+        private void pauseButton_Click(object sender, EventArgs e)
+        {
+            //pause the game
+            gameTimer.Enabled = false;
+
+            menuButton.Visible = true;
+            pauseMenuLabel.Visible = true;
+            exitButton.Visible = true;
+
+            menuButton.Enabled = true;
+            exitButton.Enabled = true;
+
+            pauseMenuLabel.Text = $"\nGAME PAUSED\n\nLevel [level]\n{lives} lives left\n\n\n\nCLICK TO RETURN";
+            Refresh();
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            //pause the game
+            gameTimer.Enabled = true;
+
+            menuButton.Visible = false;
+            pauseMenuLabel.Visible = false;
+            exitButton.Visible = false;
+
+            menuButton.Enabled = false;
+            exitButton.Enabled = false;
+
+            pauseMenuLabel.Text = $"\nGAME PAUSED\n\nLevel [level]\n{lives} lives left\n\n\n\nCLICK TO RETURN";
             Refresh();
         }
 
