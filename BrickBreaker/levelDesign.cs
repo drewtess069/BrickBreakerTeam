@@ -19,6 +19,13 @@ namespace BrickBreaker
         List<Rectangle> bricks = new List<Rectangle>();
         List<Block> blocks = new List<Block>();
 
+        string levelState;
+
+        bool DownDown = false;
+        bool rightDown = false;
+        bool upDown = false;
+        bool leftDown = false;
+
         bool hpSelect = false;
         int hp;
 
@@ -77,7 +84,7 @@ namespace BrickBreaker
                 Rectangle brick = new Rectangle(e.X, e.Y, 50, 25);
                 bricks.Add(brick);
 
-                
+
 
 
                 for (int i = 0; i < bricks.Count - 1; i++)
@@ -89,8 +96,24 @@ namespace BrickBreaker
                     }
                 }
 
-                Cursor.Position = new Point(Cursor.Position.X + 60, Cursor.Position.Y);
+                if (leftDown)
+                {
+                    Cursor.Position = new Point(Cursor.Position.X - 50, Cursor.Position.Y);
+                }
+                else if (upDown)
+                {
+                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - 25);
+                }
+                else if (DownDown)
+                {
+                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + 25);
+                }
+                else
+                {
+                    Cursor.Position = new Point(Cursor.Position.X + 50, Cursor.Position.Y);
+                }
 
+                this.Focus();
             }
         }
         private void button1_Click(object sender, EventArgs e)
@@ -109,9 +132,9 @@ namespace BrickBreaker
             }
         }
 
-        public void saveLevel()
+        public void saveLevel(string xml)
         {
-            XmlWriter writer = XmlWriter.Create("Resources/LevelDesignXML.xml");
+            XmlWriter writer = XmlWriter.Create($"Resources/{xml}.xml");
 
             writer.WriteStartElement("Level");
 
@@ -133,11 +156,11 @@ namespace BrickBreaker
             Form1.ChangeScreen(this, new MenuScreen());
         }
 
-        public void loadLevel()
+        public void loadLevel(string xml)
         {
             string x, y, hp, colourString;
 
-            XmlReader reader = XmlReader.Create("Resources/employeeXML.xml");
+            XmlReader reader = XmlReader.Create($"Resources/{xml}.xml");
 
             while (reader.Read())
             {
@@ -165,7 +188,7 @@ namespace BrickBreaker
 
             Pen blackPen = new Pen(Color.Black);
 
-            foreach(Block b in blocks)
+            foreach (Block b in blocks)
             {
                 Rectangle rectangle = new Rectangle(b.x, b.y, 50, 25);
 
@@ -180,19 +203,85 @@ namespace BrickBreaker
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            saveLevel();
+            if (levelState == "level 1")
+            {
+                saveLevel("level1XML");
+            }
+            else if (levelState == "level 2")
+            {
+                saveLevel("level2XML");
+            }
+            else if (levelState == "level 3")
+            {
+                saveLevel("level3XML");
+            }
+            else if (levelState == "level 4")
+            {
+                saveLevel("level4XML");
+            }
+            else if (levelState == "level 5")
+            {
+                saveLevel("level5XML");
+            }
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
+        private void levelDesign_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            //return to MenuScreen
-            MenuScreen ms = new MenuScreen();
-            Form form = this.FindForm();
+            if (e.KeyCode == Keys.Down)
+            {
+                DownDown = true;
+                rightDown = false;
+                upDown = false;
+                leftDown = false;
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                DownDown = false;
+                rightDown = false;
+                upDown = true;
+                leftDown = false;
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                DownDown = false;
+                rightDown = true;
+                upDown = false;
+                leftDown = false;
+            }
+            if (e.KeyCode == Keys.Left)
+            {
+                DownDown = false;
+                rightDown = false;
+                upDown = false;
+                leftDown = true;
+            }
+        }
 
-            form.Controls.Add(ms);
-            form.Controls.Remove(this);
+        private void level1Button_Click(object sender, EventArgs e)
+        {
+            levelState = "level 1";
+            this.BackgroundImage = Properties.Resources.donkeykong;
+        }
 
-            ms.Location = new Point((form.Width - ms.Width) / 2, (form.Height - ms.Height) / 2);
+        private void level2Button_Click(object sender, EventArgs e)
+        {
+            levelState = "level 2";
+            this.BackgroundImage = Properties.Resources.tetris;
+        }
+
+        private void level3Button_Click(object sender, EventArgs e)
+        {
+            levelState = "level 3";
+        }
+
+        private void level4Button_Click(object sender, EventArgs e)
+        {
+            levelState = "level 4";
+        }
+
+        private void level5Button_Click(object sender, EventArgs e)
+        {
+            levelState = "level 5";
         }
     }
 }

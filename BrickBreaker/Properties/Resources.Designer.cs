@@ -73,6 +73,18 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+
+        internal static System.Drawing.Bitmap donkeykong {
+            get {
+                object obj = ResourceManager.GetObject("donkeykong", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+
         internal static System.Drawing.Bitmap gapaddle2 {
             get {
                 object obj = ResourceManager.GetObject("gapaddle2", resourceCulture);
@@ -86,6 +98,85 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap heart {
             get {
                 object obj = ResourceManager.GetObject("heart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Level&gt;&lt;Brick&gt;&lt;x&gt;115&lt;/x&gt;&lt;y&gt;327&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [Green]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;484&lt;/x&gt;&lt;y&gt;329&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [Green]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;626&lt;/x&gt;&lt;y&gt;337&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [Green]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;684&lt;/x&gt;&lt;y&gt;336&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [Green]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;544&lt;/x&gt;&lt;y&gt;332&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [Green]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;482&lt;/x&gt;&lt;y&gt;269&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [Green]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;542&lt;/x&gt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string level1XML {
+            get {
+                return ResourceManager.GetString("level1XML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///.
+        /// </summary>
+        internal static string level2XML {
+            get {
+                return ResourceManager.GetString("level2XML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///.
+        /// </summary>
+        internal static string level3XML {
+            get {
+                return ResourceManager.GetString("level3XML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///.
+        /// </summary>
+        internal static string level4XML {
+            get {
+                return ResourceManager.GetString("level4XML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///.
+        /// </summary>
+        internal static string level5XML {
+            get {
+                return ResourceManager.GetString("level5XML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pmpaddle2 {
+            get {
+                object obj = ResourceManager.GetObject("pmpaddle2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pxwiv {
+            get {
+                object obj = ResourceManager.GetObject("pxwiv", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tetris {
+            get {
+                object obj = ResourceManager.GetObject("tetris", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

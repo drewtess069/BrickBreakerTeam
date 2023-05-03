@@ -48,7 +48,7 @@
             // 
             // resultsLabel
             // 
-            this.resultsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resultsLabel.ForeColor = System.Drawing.Color.White;
             this.resultsLabel.Location = new System.Drawing.Point(292, 224);
             this.resultsLabel.Name = "resultsLabel";
