@@ -195,8 +195,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 
-            this.Controls.Add(this.lazerLabel);
-            this.Controls.Add(this.testLabel);
+            //this.Controls.Add(this.lazerLabel);
+            //this.Controls.Add(this.testLabel);
 
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.menuButton);
@@ -211,7 +211,7 @@
             this.Controls.Add(this.UXLabel);
             this.Controls.Add(this.livesLabel);
 
-            this.Controls.Add(this.scoreLabel);
+            //this.Controls.Add(this.scoreLabel);
 
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);

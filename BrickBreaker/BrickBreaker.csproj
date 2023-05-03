@@ -78,7 +78,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Lazer.cs" />
     <Compile Include="GameOverScreen.cs">
       <SubType>UserControl</SubType>
@@ -86,7 +85,6 @@
     <Compile Include="GameOverScreen.Designer.cs">
       <DependentUpon>GameOverScreen.cs</DependentUpon>
     </Compile>
-
     <Compile Include="levelDesign.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -200,7 +198,9 @@
     <None Include="Resources\pmpaddle2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pxwiv.png" />
+    <None Include="Resources\pxwiv.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -404,27 +404,6 @@ namespace BrickBreaker
             Refresh();
         }
 
-        //private void pauseMenuLabel_Click(object sender, EventArgs e)
-        //{
-        //    //resume the game
-        //    gameTimer.Enabled = true;
-
-        //    menuButton.Visible = false;
-        //    pauseMenuLabel.Visible = false;
-        //}
-
-        //private void menuButton_Click(object sender, EventArgs e)
-        //{
-        //    //return to MenuScreen
-        //    MenuScreen ms = new MenuScreen();
-        //    Form form = this.FindForm();
-
-        //    form.Controls.Add(ms);
-        //    form.Controls.Remove(this);
-
-        //    ms.Location = new Point((form.Width - ms.Width) / 2, (form.Height - ms.Height) / 2);
-        //}
-
         private void pauseButton_Click(object sender, EventArgs e)
         {
             //pause the game
