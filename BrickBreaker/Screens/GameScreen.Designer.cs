@@ -252,9 +252,9 @@
             // label1
             // 
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(3, 577);
+            this.label1.Location = new System.Drawing.Point(3, 585);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(848, 61);
+            this.label1.Size = new System.Drawing.Size(848, 53);
             this.label1.TabIndex = 15;
             this.label1.Text = "label1";
             // 
@@ -262,9 +262,9 @@
             // 
             this.pictureBox1.BackgroundImage = global::BrickBreaker.Properties.Resources.heart__2_;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 589);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 592);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(45, 43);
+            this.pictureBox1.Size = new System.Drawing.Size(45, 40);
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
             // 
@@ -272,9 +272,9 @@
             // 
             this.pictureBox2.BackgroundImage = global::BrickBreaker.Properties.Resources.heart__2_;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(219, 589);
+            this.pictureBox2.Location = new System.Drawing.Point(219, 592);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(45, 43);
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
             // 
@@ -282,9 +282,9 @@
             // 
             this.pictureBox3.BackgroundImage = global::BrickBreaker.Properties.Resources.heart__2_;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(168, 589);
+            this.pictureBox3.Location = new System.Drawing.Point(168, 592);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(45, 43);
+            this.pictureBox3.Size = new System.Drawing.Size(45, 40);
             this.pictureBox3.TabIndex = 18;
             this.pictureBox3.TabStop = false;
             // 
@@ -292,9 +292,9 @@
             // 
             this.pictureBox4.BackgroundImage = global::BrickBreaker.Properties.Resources.heart__2_;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(117, 589);
+            this.pictureBox4.Location = new System.Drawing.Point(117, 592);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(45, 43);
+            this.pictureBox4.Size = new System.Drawing.Size(45, 40);
             this.pictureBox4.TabIndex = 19;
             this.pictureBox4.TabStop = false;
             // 
@@ -302,9 +302,9 @@
             // 
             this.pictureBox5.BackgroundImage = global::BrickBreaker.Properties.Resources.heart__2_;
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(66, 589);
+            this.pictureBox5.Location = new System.Drawing.Point(66, 592);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(45, 43);
+            this.pictureBox5.Size = new System.Drawing.Size(45, 40);
             this.pictureBox5.TabIndex = 20;
             this.pictureBox5.TabStop = false;
             // 
