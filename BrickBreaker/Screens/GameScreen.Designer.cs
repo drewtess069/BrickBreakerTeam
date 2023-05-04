@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameScreen));
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
-
             this.testLabel = new System.Windows.Forms.Label();
             this.lazerLabel = new System.Windows.Forms.Label();
             this.life1 = new System.Windows.Forms.PictureBox();
@@ -40,31 +39,30 @@
             this.life5 = new System.Windows.Forms.PictureBox();
             this.life4 = new System.Windows.Forms.PictureBox();
             this.scoreLabel = new System.Windows.Forms.Label();
-
             this.scoreOutput = new System.Windows.Forms.Label();
             this.UXLabel = new System.Windows.Forms.Label();
             this.livesLabel = new System.Windows.Forms.Label();
             this.pauseButton = new System.Windows.Forms.PictureBox();
             this.pauseMenuLabel = new System.Windows.Forms.Label();
             this.menuButton = new System.Windows.Forms.Button();
-            this.life4 = new System.Windows.Forms.PictureBox();
-            this.life5 = new System.Windows.Forms.PictureBox();
-            this.life3 = new System.Windows.Forms.PictureBox();
-            this.life2 = new System.Windows.Forms.PictureBox();
-            this.life1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.life4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.life5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.life3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.life2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.life1)).BeginInit();
-
             this.exitButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.life1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.life2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.life3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.life5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.life4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pauseButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -73,7 +71,6 @@
             this.gameTimer.Interval = 1;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
-
             // testLabel
             // 
             this.testLabel.AutoSize = true;
@@ -98,12 +95,11 @@
             // life1
             // 
             this.life1.BackColor = System.Drawing.Color.Black;
-            this.life1.BackgroundImage = global::BrickBreaker.Properties.Resources.heart;
             this.life1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.life1.Location = new System.Drawing.Point(9, 594);
+            this.life1.Location = new System.Drawing.Point(11, 743);
             this.life1.Margin = new System.Windows.Forms.Padding(2);
             this.life1.Name = "life1";
-            this.life1.Size = new System.Drawing.Size(39, 44);
+            this.life1.Size = new System.Drawing.Size(49, 55);
             this.life1.TabIndex = 4;
             this.life1.TabStop = false;
             this.life1.Visible = false;
@@ -111,12 +107,11 @@
             // life2
             // 
             this.life2.BackColor = System.Drawing.Color.Black;
-            this.life2.BackgroundImage = global::BrickBreaker.Properties.Resources.heart;
             this.life2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.life2.Location = new System.Drawing.Point(44, 594);
+            this.life2.Location = new System.Drawing.Point(55, 743);
             this.life2.Margin = new System.Windows.Forms.Padding(2);
             this.life2.Name = "life2";
-            this.life2.Size = new System.Drawing.Size(39, 44);
+            this.life2.Size = new System.Drawing.Size(49, 55);
             this.life2.TabIndex = 5;
             this.life2.TabStop = false;
             this.life2.Visible = false;
@@ -124,12 +119,11 @@
             // life3
             // 
             this.life3.BackColor = System.Drawing.Color.Black;
-            this.life3.BackgroundImage = global::BrickBreaker.Properties.Resources.heart;
             this.life3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.life3.Location = new System.Drawing.Point(79, 594);
+            this.life3.Location = new System.Drawing.Point(99, 743);
             this.life3.Margin = new System.Windows.Forms.Padding(2);
             this.life3.Name = "life3";
-            this.life3.Size = new System.Drawing.Size(39, 44);
+            this.life3.Size = new System.Drawing.Size(49, 55);
             this.life3.TabIndex = 6;
             this.life3.TabStop = false;
             this.life3.Visible = false;
@@ -137,12 +131,11 @@
             // life5
             // 
             this.life5.BackColor = System.Drawing.Color.Black;
-            this.life5.BackgroundImage = global::BrickBreaker.Properties.Resources.heart;
             this.life5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.life5.Location = new System.Drawing.Point(150, 594);
+            this.life5.Location = new System.Drawing.Point(188, 743);
             this.life5.Margin = new System.Windows.Forms.Padding(2);
             this.life5.Name = "life5";
-            this.life5.Size = new System.Drawing.Size(39, 44);
+            this.life5.Size = new System.Drawing.Size(49, 55);
             this.life5.TabIndex = 7;
             this.life5.TabStop = false;
             this.life5.Visible = false;
@@ -150,12 +143,11 @@
             // life4
             // 
             this.life4.BackColor = System.Drawing.Color.Black;
-            this.life4.BackgroundImage = global::BrickBreaker.Properties.Resources.heart;
             this.life4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.life4.Location = new System.Drawing.Point(115, 594);
+            this.life4.Location = new System.Drawing.Point(144, 743);
             this.life4.Margin = new System.Windows.Forms.Padding(2);
             this.life4.Name = "life4";
-            this.life4.Size = new System.Drawing.Size(39, 44);
+            this.life4.Size = new System.Drawing.Size(49, 55);
             this.life4.TabIndex = 8;
             this.life4.TabStop = false;
             this.life4.Visible = false;
@@ -178,7 +170,7 @@
             this.scoreOutput.BackColor = System.Drawing.Color.Black;
             this.scoreOutput.Font = new System.Drawing.Font("Courier New", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreOutput.ForeColor = System.Drawing.Color.White;
-            this.scoreOutput.Location = new System.Drawing.Point(757, 598);
+            this.scoreOutput.Location = new System.Drawing.Point(751, 597);
             this.scoreOutput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.scoreOutput.Name = "scoreOutput";
             this.scoreOutput.Size = new System.Drawing.Size(94, 38);
@@ -245,66 +237,6 @@
             this.menuButton.Visible = false;
             this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
-            // life4
-            // 
-            this.life4.BackColor = System.Drawing.Color.Black;
-            this.life4.BackgroundImage = global::BrickBreaker.Properties.Resources.heart;
-            this.life4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.life4.Location = new System.Drawing.Point(144, 743);
-            this.life4.Name = "life4";
-            this.life4.Size = new System.Drawing.Size(49, 55);
-            this.life4.TabIndex = 8;
-            this.life4.TabStop = false;
-            this.life4.Visible = false;
-            // 
-            // life5
-            // 
-            this.life5.BackColor = System.Drawing.Color.Black;
-            this.life5.BackgroundImage = global::BrickBreaker.Properties.Resources.heart;
-            this.life5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.life5.Location = new System.Drawing.Point(188, 743);
-            this.life5.Name = "life5";
-            this.life5.Size = new System.Drawing.Size(49, 55);
-            this.life5.TabIndex = 7;
-            this.life5.TabStop = false;
-            this.life5.Visible = false;
-            // 
-            // life3
-            // 
-            this.life3.BackColor = System.Drawing.Color.Black;
-            this.life3.BackgroundImage = global::BrickBreaker.Properties.Resources.heart;
-            this.life3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.life3.Location = new System.Drawing.Point(99, 743);
-            this.life3.Name = "life3";
-            this.life3.Size = new System.Drawing.Size(49, 55);
-            this.life3.TabIndex = 6;
-            this.life3.TabStop = false;
-            this.life3.Visible = false;
-            // 
-            // life2
-            // 
-            this.life2.BackColor = System.Drawing.Color.Black;
-            this.life2.BackgroundImage = global::BrickBreaker.Properties.Resources.heart;
-            this.life2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.life2.Location = new System.Drawing.Point(55, 743);
-            this.life2.Name = "life2";
-            this.life2.Size = new System.Drawing.Size(49, 55);
-            this.life2.TabIndex = 5;
-            this.life2.TabStop = false;
-            this.life2.Visible = false;
-            // 
-            // life1
-            // 
-            this.life1.BackColor = System.Drawing.Color.Black;
-            this.life1.BackgroundImage = global::BrickBreaker.Properties.Resources.heart;
-            this.life1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.life1.Location = new System.Drawing.Point(11, 743);
-            this.life1.Name = "life1";
-            this.life1.Size = new System.Drawing.Size(49, 55);
-            this.life1.TabIndex = 4;
-            this.life1.TabStop = false;
-            this.life1.Visible = false;
-
             // exitButton
             // 
             this.exitButton.Enabled = false;
@@ -317,16 +249,75 @@
             this.exitButton.Visible = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Location = new System.Drawing.Point(3, 577);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(848, 61);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "label1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::BrickBreaker.Properties.Resources.heart__2_;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 589);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(45, 43);
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::BrickBreaker.Properties.Resources.heart__2_;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(219, 589);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(45, 43);
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::BrickBreaker.Properties.Resources.heart__2_;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox3.Location = new System.Drawing.Point(168, 589);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(45, 43);
+            this.pictureBox3.TabIndex = 18;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::BrickBreaker.Properties.Resources.heart__2_;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox4.Location = new System.Drawing.Point(117, 589);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(45, 43);
+            this.pictureBox4.TabIndex = 19;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = global::BrickBreaker.Properties.Resources.heart__2_;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox5.Location = new System.Drawing.Point(66, 589);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(45, 43);
+            this.pictureBox5.TabIndex = 20;
+            this.pictureBox5.TabStop = false;
+            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-
-            //this.Controls.Add(this.lazerLabel);
-            //this.Controls.Add(this.testLabel);
-
-
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.menuButton);
             this.Controls.Add(this.pauseMenuLabel);
@@ -341,21 +332,25 @@
             this.Controls.Add(this.life1);
             this.Controls.Add(this.UXLabel);
             this.Controls.Add(this.livesLabel);
-
             this.Controls.Add(this.scoreLabel);
+            this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Name = "GameScreen";
             this.Size = new System.Drawing.Size(854, 640);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.life4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.life5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.life3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.life2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.life1)).EndInit();
-
+            ((System.ComponentModel.ISupportInitialize)(this.life2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.life3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.life5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.life4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pauseButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,5 +376,11 @@
         private System.Windows.Forms.Label pauseMenuLabel;
         private System.Windows.Forms.Button menuButton;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }

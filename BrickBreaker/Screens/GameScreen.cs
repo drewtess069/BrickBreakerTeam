@@ -214,7 +214,15 @@ namespace BrickBreaker
             ball.Move();
 
             // Check for collision with top and side walls
+
+            // Check for collision with top and side walls
             ball.WallCollision(this);
+            if (state == "startOff" && spaceDown == true)
+            {
+                state = "playing";
+                ball.xSpeed = 6;
+                ball.ySpeed = -6;
+            }
 
             // Check for ball hitting bottom of screen
             if (ball.BottomCollision(this))
@@ -222,26 +230,22 @@ namespace BrickBreaker
                 lives--;
                 score -= 200;
                 ScoreAndLives(); //display updated lives count
+                state = "startOff";
 
-                // Moves the ball back to origin
-                ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-                ball.y = (this.Height - paddle.height) - 85;
+                #region pausing game and playing again with spacebar
+                if (state == "playing")
+                {
+                    ball.Move();
 
-                #region work in progres: pausing game and playing again with spacebar
-                ////if (state == "startOff" && spacebarDown == true)
-                ////{
-                ////    state = "playing";
-                ////}
+                }
+                if (state == "startOff")
+                {
+                    ball.stasis();
+                    ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
+                    ball.y = (this.Height - paddle.height) - 85;
+                }
 
-                ////if (state == "playing")
-                ////{
-                ////    gameTimer.Enabled = true;
-                ////}
-                ////else if (state == "startOff")
-                ////{
-                ////    gameTimer.Enabled = false;
-                ////}
-                #endregion
+                // Check for ball hitting bottom of screen
 
 
                 if (lives == 0)
@@ -480,4 +484,5 @@ namespace BrickBreaker
             }
         }
     }
+    #endregion
 }

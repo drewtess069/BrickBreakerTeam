@@ -93,10 +93,24 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap heart {
+        internal static System.Drawing.Bitmap heart__2_ {
             get {
-                object obj = ResourceManager.GetObject("heart", resourceCulture);
+                object obj = ResourceManager.GetObject("heart__2_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;leaderboard&gt;
+        ///  &lt;nickname&gt;The evil scary&lt;/nickname&gt;
+        ///  &lt;score&gt; 666&lt;/score&gt;
+        ///&lt;/leaderboard&gt;
+        /// .
+        /// </summary>
+        internal static string leaderboard {
+            get {
+                return ResourceManager.GetString("leaderboard", resourceCulture);
             }
         }
         
@@ -152,9 +166,9 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pmpaddle2 {
+        internal static System.Drawing.Bitmap menuBack {
             get {
-                object obj = ResourceManager.GetObject("pmpaddle2", resourceCulture);
+                object obj = ResourceManager.GetObject("menuBack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -162,9 +176,9 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pxwiv {
+        internal static System.Drawing.Bitmap pmpaddle2 {
             get {
-                object obj = ResourceManager.GetObject("pxwiv", resourceCulture);
+                object obj = ResourceManager.GetObject("pmpaddle2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

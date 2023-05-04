@@ -32,6 +32,13 @@ namespace BrickBreaker
             y = y + Convert.ToInt32(ySpeed);
         }
 
+        public void stasis()
+        {
+            xSpeed = 0;
+            ySpeed = 0;
+ 
+        }
+
         public bool BlockCollision(Block b)
         {
             Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
@@ -49,72 +56,43 @@ namespace BrickBreaker
         {
             Rectangle ballRec = new Rectangle(x, y, size, size);
             List<Rectangle> paddleRectangles = new List<Rectangle>();
-            Rectangle leftSideRec = new Rectangle(p.x - 3, p.y, 8, p.height);
-            Rectangle rightSideRec = new Rectangle(p.x + p.width - 2, p.y, 8, p.height);
+            Rectangle leftSideRec = new Rectangle(p.x - 3, p.y, 3, p.height);
+            Rectangle rightSideRec = new Rectangle(p.x + p.width + 3, p.y, 3, p.height);
 
             paddleRectangles.Add(leftSideRec);
             paddleRectangles.Add(rightSideRec);
 
-            Rectangle paddleRec = new Rectangle(p.x + 5, p.y, p.width - 10, p.height);
+            Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
 
             #region Paddle side collision code
-            //if (canCollide == true)
-            //{
-            if (ballRec.IntersectsWith(leftSideRec))
+            if (canCollide == true)
             {
-                if (xSpeed > 0) 
+                if (ballRec.IntersectsWith(paddleRec))
                 {
-                    xSpeed *= -1.2f;
-                    ySpeed *= 0.8f;
+                    ySpeed *= -1;
+                    canCollide = false;
                 }
-                else
+                foreach (Rectangle r in paddleRectangles)
                 {
-                    ySpeed *= -1.4f;
-                    xSpeed *= 0.8f;
+                    if (ballRec.IntersectsWith(r))
+                    {
+                        xSpeed *= -1;
+                        canCollide = false;
+                    }
                 }
             }
-            else if (ballRec.IntersectsWith(rightSideRec)) 
+            if (canCollide == false)
             {
-                if (xSpeed < 0)
-                {
-                    xSpeed *= -1.2f;
-                    ySpeed *= 0.8f;
-                }
-                else
-                {
-                    ySpeed *= -1.2f;
-                    xSpeed *= 0.8f;
-                }
+                collisionTimer++;
             }
-            else if (ballRec.IntersectsWith(paddleRec))
-            {
-                ySpeed *= -1;
-                canCollide = false;
-            }
-
-
-            //foreach (Rectangle r in paddleRectangles)
-            //    {
-            //    if (ballRec.IntersectsWith(r))
-            //    {
-            //        xSpeed *= -1;
-            //        canCollide = false;
-            //    }
-            //}
-            //}
-            //if (canCollide == false)
-            //{
-            //    collisionTimer++;
-            //}
-            //#endregion
-
-            //#region Collision timer
-            //if (collisionTimer >= 50)
-            //{
-            //    canCollide = true;
-            //    collisionTimer = 0;
-            //}
             #endregion
+
+            #region Collision timer
+            if (collisionTimer >= 50)
+            {
+                canCollide = true;
+                collisionTimer = 0;
+            }
         }
 
         public void WallCollision(UserControl UC)
@@ -149,4 +127,5 @@ namespace BrickBreaker
         }
 
     }
+    #endregion
 }

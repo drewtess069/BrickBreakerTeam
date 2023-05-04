@@ -36,6 +36,7 @@ namespace BrickBreaker
 
         private void levelDesign_MouseClick(object sender, MouseEventArgs e)
         {
+
             if (hpSelect == true)
             {
                 TextBox textbox = new TextBox();
