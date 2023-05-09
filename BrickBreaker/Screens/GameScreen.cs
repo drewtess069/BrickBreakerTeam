@@ -45,6 +45,7 @@ namespace BrickBreaker
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
         SolidBrush alphaBrush = new SolidBrush(Color.Blue);
+        SolidBrush greenBrush = new SolidBrush (Color.Green);
 
         // random
         Random rnd = new Random();
@@ -59,7 +60,8 @@ namespace BrickBreaker
         List<Rectangle> paddleRectangles = new List<Rectangle>();
 
         int alpha = 0;
-        bool inUse;
+        int alpha2 = 150;
+     
 
         // lists
         //List<PowerUp> powerUpList = new List<PowerUp>();
@@ -82,6 +84,9 @@ namespace BrickBreaker
         int timeTwo;
 
         bool ballDown = false;
+        bool longPaddle = false;
+        bool inUse;
+        bool toggle = false;
         #endregion
 
         public GameScreen()
@@ -136,6 +141,7 @@ namespace BrickBreaker
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
             this.BackgroundImage = Properties.Resources.donkeykong;
+           
 
             
             loadLevel("level1XML");
@@ -406,6 +412,7 @@ namespace BrickBreaker
 
                     if (p.type == "longPaddle")
                     {
+                        longPaddle = true; 
                         int paddleLenght = 20;
                         if (paddle.x < 10)
                         {
@@ -486,6 +493,25 @@ namespace BrickBreaker
                         l.uses--;
                     }
                 }
+            }
+            
+            //long paddle color change
+            if (alpha2 == 200)
+            {
+                toggle = false; 
+            }
+            else if (alpha2 == 100)
+            {
+                toggle = true; 
+            }
+
+            if (toggle == true)
+            {
+                alpha2++; 
+            }
+            else if (toggle == false)
+            {
+                alpha2--; 
             }
 
 
@@ -603,10 +629,12 @@ namespace BrickBreaker
         {
             if (lives != 0)
             {
+                resetPowers();
                 NextLevel();
             }
             else
             {
+                resetPowers(); 
                 Form1.ChangeScreen(this, new GameOverScreen());
             }
 
@@ -714,7 +742,36 @@ namespace BrickBreaker
                 e.Graphics.FillRectangle(alphaBrush, l.x, l.y, l.width, l.height);
             }
 
+            Color bl = Color.FromArgb(alpha2, Color.Green);
+            alphaBrush.Color = bl; 
+            if (longPaddle == true)
+            {
+                e.Graphics.FillRectangle(alphaBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+            }
+
+        }
+
+        public void resetPowers()
+        {
+            //resets paddle dimensions =
+            paddle.width = 80;
+            paddle.height = 20;
+            longPaddle = false; 
+            
+            //removes lazer
+            foreach(Lazer l in lazerList)
+            {
+                lazerList.Remove(l);
+                break; 
+            }
+
+            //resets ball speed 
+            ball.xSpeed = xSpeed; 
+            ball.ySpeed = ySpeed;
         }
     }
     #endregion
 }
+
+
+
