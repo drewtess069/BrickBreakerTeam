@@ -31,6 +31,7 @@ namespace BrickBreaker
         public static int score = 0;
         string state;
 
+        Image paddleImage;
 
         // Paddle and Ball objects
         
@@ -136,6 +137,7 @@ namespace BrickBreaker
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
             this.BackgroundImage = Properties.Resources.donkeykong;
+            paddleImage = Properties.Resources.dkpaddle2;
 
             
             loadLevel("level1XML");
@@ -168,17 +170,21 @@ namespace BrickBreaker
                 state = "level 2";
                 loadLevel("level2XML");
                 this.BackgroundImage = Properties.Resources.tetris;
+                paddleImage = Properties.Resources.tspaddle2;
             }
             else if (state == "level 2")
             {
                 state = "level 3";
                 loadLevel("level3XML");
                 this.BackgroundImage = Properties.Resources.galagaBack;
+                paddleImage = Properties.Resources.gapaddle2;
             }
             else if (state == "level 3")
             {
                 state = "level 4";
                 loadLevel("level4XML");
+                this.BackgroundImage = Properties.Resources.pacmanback;
+                paddleImage = Properties.Resources.pmpaddle2;
             }
             else if (state == "level 4")
             {
@@ -643,7 +649,7 @@ namespace BrickBreaker
 
                     Color colour = Color.FromName(colourString);
 
-                    Block newBlock = new Block(Convert.ToInt16(x), Convert.ToInt16(y), Convert.ToInt16(hp), colour);
+                    Block newBlock = new Block(Convert.ToInt16(x), Convert.ToInt16(y) + 20, Convert.ToInt16(hp), colour);
                     blocks.Add(newBlock);
                 }
             }
@@ -668,12 +674,18 @@ namespace BrickBreaker
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             // Draws paddle
-            paddleBrush.Color = Color.White;
-            e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+            //paddleBrush.Color = Color.White;
+            //e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+
+            e.Graphics.DrawImage(paddleImage, paddle.x, paddle.y);
 
             // Draws blocks
             foreach (Block b in blocks)
             {
+                Color blockColour = b.colour;
+
+                SolidBrush blockBrush = new SolidBrush(blockColour);
+
                 e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
             }
 
