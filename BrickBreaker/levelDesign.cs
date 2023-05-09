@@ -147,7 +147,7 @@ namespace BrickBreaker
                 writer.WriteElementString("x", Convert.ToString(t.Location.X));
                 writer.WriteElementString("y", Convert.ToString(t.Location.Y));
                 writer.WriteElementString("hp", Convert.ToString(t.Text));
-                writer.WriteElementString("colour", Convert.ToString(t.BackColor));
+                writer.WriteElementString("colour", Convert.ToString(t.BackColor.Name));
 
                 writer.WriteEndElement();
             }
