@@ -19,18 +19,14 @@ namespace BrickBreaker
         public EndScreen()
         {
             InitializeComponent();
+            showPlayerScore();
+        }
+
+        private void showPlayerScore()
+        {
             endLabel.Text = "Your High Score: ";
-        }
-
-        private void LoadScore()
-        {
             endLabel.Text += $"{GameScreen.score}";
-
-        }
-
-        private void submitNameLabel_TextChanged(object sender, EventArgs e) //remove 
-        {
-
+            LoadScores();
         }
 
         private void playButton_Click(object sender, EventArgs e)
@@ -41,7 +37,7 @@ namespace BrickBreaker
         private void submitButton_Click(object sender, EventArgs e)
         {
 
-            LoadScores();
+            //LoadScores();
 
             string nickname = submitNameLabel.Text;
             int score = GameScreen.score;
@@ -52,10 +48,11 @@ namespace BrickBreaker
             //leaderboard.Sort();
 
             /// lambda expression: find by score then sort by score and name.
-            leaderboard = leaderboard.OrderBy(x => x.score).ThenBy(x => x.nickname).ToList();
+            leaderboardLabel.Text = "Name / Score"; //clear label
+            leaderboard = leaderboard.OrderBy(x => x.score).Reverse().ToList();
             foreach (HighScore h in leaderboard)
             {
-                leaderboardLabel.Text = $"Name / Score \n {h.nickname} / {h.score}";
+                leaderboardLabel.Text += $"\n {h.nickname} / {h.score}";
             }
 
             /// put dummy scores into xml file and load them from there into the leaderboard label/code
@@ -89,7 +86,11 @@ namespace BrickBreaker
                     leaderboard.Add(newScore);
                 }
             }
-
+            leaderboard = leaderboard.OrderBy(x => x.score).ThenBy(x => x.nickname).ToList();
+            foreach (HighScore h in leaderboard)
+            {
+                leaderboardLabel.Text += $"\n {h.nickname} / {h.score}";
+            }
             reader.Close();
         }
     }

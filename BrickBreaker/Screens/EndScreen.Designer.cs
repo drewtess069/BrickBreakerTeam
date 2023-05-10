@@ -88,7 +88,7 @@
             this.submitNameLabel.Name = "submitNameLabel";
             this.submitNameLabel.Size = new System.Drawing.Size(295, 32);
             this.submitNameLabel.TabIndex = 4;
-            this.submitNameLabel.TextChanged += new System.EventHandler(this.submitNameLabel_TextChanged);
+             ///this.submitNameLabel.TextChanged += new System.EventHandler(this.submitNameLabel_TextChanged);
             // 
             // leaderboardLabel
             // 
