@@ -7,32 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace BrickBreaker
 {
     public partial class EndScreen : UserControl
     {
-
-
         List<HighScore> leaderboard = new List<HighScore>();
-
-
-        //(new HighScore[] { 1, 99, 390, -500});
 
 
         public EndScreen()
         {
             InitializeComponent();
             endLabel.Text = "Your High Score: ";
-            LoadScore();
         }
 
         private void LoadScore()
         {
             endLabel.Text += $"{GameScreen.score}";
-
-            //HighScore a = new HighScore("aaa", 300);
-            //leaderboard.Add(a);
 
         }
 
@@ -48,20 +40,22 @@ namespace BrickBreaker
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+
+            LoadScores();
+
             string nickname = submitNameLabel.Text;
             int score = GameScreen.score;
 
 
-            HighScore newScore = new HighScore(nickname, score);
-            leaderboard.Add(newScore);
-            leaderboard.Sort();
-            //old code //leaderboardLabel.Text = $"Name / Score\n {leaderboard}";
+            HighScore myScore = new HighScore(nickname, score);
+            leaderboard.Add(myScore);
+            //leaderboard.Sort();
 
             /// lambda expression: find by score then sort by score and name.
             leaderboard = leaderboard.OrderBy(x => x.score).ThenBy(x => x.nickname).ToList();
-            foreach (HighScore s in leaderboard)
+            foreach (HighScore h in leaderboard)
             {
-                leaderboardLabel.Text += s.nickname + "" + s.score + " \n";
+                leaderboardLabel.Text = $"Name / Score \n {h.nickname} / {h.score}";
             }
 
             /// put dummy scores into xml file and load them from there into the leaderboard label/code
@@ -69,6 +63,7 @@ namespace BrickBreaker
             /// display sorted leaderboard to label
 
             /// add xml write method and read method
+
         }
         private void WriteScore()
         {
@@ -76,7 +71,26 @@ namespace BrickBreaker
         }
         private void LoadScores()
         {
+            string nickname;
+            int score;
 
+            XmlReader reader = XmlReader.Create("Resources/leaderboard.xml");
+
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Text)
+                {
+                    nickname = reader.ReadString();
+
+                    reader.ReadToNextSibling("score");
+                    score = reader.ReadElementContentAsInt();
+
+                    HighScore newScore = new HighScore(nickname, score);
+                    leaderboard.Add(newScore);
+                }
+            }
+
+            reader.Close();
         }
     }
 }

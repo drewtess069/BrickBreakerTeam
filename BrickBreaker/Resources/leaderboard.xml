@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <leaderboard>
-  <nickname>The evil scary</nickname>
-  <score> 666</score>
+  <highscore>
+    <nickname>The evil scary</nickname>
+    <score> 666</score>
+  </highscore>
+  <highscore>
+    <nickname>The happy grinner</nickname>
+    <score>545</score>
+  </highscore>
+  <highscore>
+    <nickname>The sucky gamer</nickname>
+    <score>-999</score>
+  </highscore>
 </leaderboard>
- 

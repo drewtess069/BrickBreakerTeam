@@ -55,6 +55,7 @@
             this.resultsLabel.Size = new System.Drawing.Size(492, 124);
             this.resultsLabel.TabIndex = 5;
             this.resultsLabel.Text = "YOU MADE IT TO LEVEL:\r\n\r\nYOUR SCORE:";
+            this.resultsLabel.Click += new System.EventHandler(this.resultsLabel_Click);
             // 
             // playAgainButton
             // 

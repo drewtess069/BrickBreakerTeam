@@ -52,5 +52,10 @@ namespace BrickBreaker
         {
             Form1.ChangeScreen(this, new EndScreen());
         }
+
+        private void resultsLabel_Click(object sender, EventArgs e)
+        {
+            Form1.ChangeScreen(this, new EndScreen()); 
+        }
     }
 }
