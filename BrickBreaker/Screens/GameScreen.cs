@@ -393,7 +393,7 @@ namespace BrickBreaker
                         OnEnd();
                     }
 
-                    valu = 2;//valu = rnd.Next(0, 3); 
+                    valu = rnd.Next(0, 3); 
                     if (valu == 2)
                     {
                         PowerUp newPowerUp = new PowerUp(0, 0, 0, 3, null, null, true, 12, 12);
@@ -405,7 +405,6 @@ namespace BrickBreaker
             }
 
             //powerup collision, movement and consequence
-            testLabel.Text = $"{powerUpList.Count()}";
 
             //powerup collision, movement and consequence
             foreach (PowerUp p in powerUpList)
@@ -606,6 +605,7 @@ namespace BrickBreaker
             exitButton.Enabled = false;
 
             pauseMenuLabel.Text = $"\nGAME PAUSED\n\nLevel [level]\n{lives} lives left\n\n\n\nCLICK TO RETURN";
+            this.Focus();
             Refresh();
         }
 
@@ -706,8 +706,9 @@ namespace BrickBreaker
             //paddleBrush.Color = Color.White;
             //e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
 
-            e.Graphics.DrawImage(paddleImage, paddle.x, paddle.y);
 
+            e.Graphics.DrawImage(paddleImage, paddle.x + paddle.width / 2 - 40, paddle.y);
+          
             // Draws blocks
             foreach (Block b in blocks)
             {

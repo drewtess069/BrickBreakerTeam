@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameScreen));
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
-            this.testLabel = new System.Windows.Forms.Label();
             this.lazerLabel = new System.Windows.Forms.Label();
             this.scoreLabel = new System.Windows.Forms.Label();
             this.scoreOutput = new System.Windows.Forms.Label();
@@ -60,25 +59,13 @@
             this.gameTimer.Interval = 1;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
-            // testLabel
-            // 
-            this.testLabel.AutoSize = true;
-            this.testLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.testLabel.Location = new System.Drawing.Point(816, 181);
-            this.testLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.testLabel.Name = "testLabel";
-            this.testLabel.Size = new System.Drawing.Size(51, 20);
-            this.testLabel.TabIndex = 0;
-            this.testLabel.Text = "label1";
-            // 
             // lazerLabel
             // 
             this.lazerLabel.AutoSize = true;
             this.lazerLabel.Location = new System.Drawing.Point(754, 484);
             this.lazerLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lazerLabel.Name = "lazerLabel";
-            this.lazerLabel.Size = new System.Drawing.Size(0, 20);
+            this.lazerLabel.Size = new System.Drawing.Size(0, 13);
             this.lazerLabel.TabIndex = 1;
             // 
             // scoreLabel
@@ -244,7 +231,6 @@
             this.Controls.Add(this.pauseMenuLabel);
             this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.lazerLabel);
-            this.Controls.Add(this.testLabel);
             this.Controls.Add(this.scoreOutput);
             this.Controls.Add(this.livesLabel);
             this.Controls.Add(this.scoreLabel);
@@ -269,8 +255,6 @@
         #endregion
 
         private System.Windows.Forms.Timer gameTimer;
- 
-        private System.Windows.Forms.Label testLabel;
         private System.Windows.Forms.Label lazerLabel;
         private System.Windows.Forms.Label scoreLabel;
         private System.Windows.Forms.Label scoreOutput;
