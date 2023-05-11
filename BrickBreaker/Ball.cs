@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Windows.Forms.VisualStyles;
 
 //latest
 
@@ -36,63 +37,144 @@ namespace BrickBreaker
         {
             xSpeed = 0;
             ySpeed = 0;
- 
+
         }
 
         public bool BlockCollision(Block b)
         {
             Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
+
+            Rectangle leftBlock = new Rectangle(b.x, b.y + 5, 13, 15);
+            Rectangle rightBlock = new Rectangle(b.x + b.width - 10, b.y + 5, 13, 15);
+            Rectangle topBlock = new Rectangle(b.x + 15, b.y, 20, 15);
+            Rectangle bottomBlock = new Rectangle(b.x + 15, b.y + b.height - 15, 20, 15);
+
             Rectangle ballRec = new Rectangle(x, y, size, size);
 
-            if (ballRec.IntersectsWith(blockRec))
+            if (ballRec.IntersectsWith(leftBlock) || ballRec.IntersectsWith(rightBlock))
+            {
+                xSpeed *= -1;
+                return true;
+            }
+            else if (ballRec.IntersectsWith(topBlock) || ballRec.IntersectsWith(bottomBlock))
             {
                 ySpeed *= -1;
+                return true;
             }
 
-            return blockRec.IntersectsWith(ballRec);
+            return false;
         }
 
-        public void PaddleCollision(Paddle p)
+        public bool PaddleCollision(Paddle p)
         {
             Rectangle ballRec = new Rectangle(x, y, size, size);
-            List<Rectangle> paddleRectangles = new List<Rectangle>();
-            Rectangle leftSideRec = new Rectangle(p.x - 3, p.y, 3, p.height);
-            Rectangle rightSideRec = new Rectangle(p.x + p.width + 3, p.y, 3, p.height);
 
-            paddleRectangles.Add(leftSideRec);
-            paddleRectangles.Add(rightSideRec);
+            Rectangle playerRec = new Rectangle(p.x, p.y, p.width, p.height);
+            Rectangle leftSide = new Rectangle(p.x, p.y, 20, p.height);
+            Rectangle rightSide = new Rectangle(p.x + p.width - 20, p.y, 20, p.height);
+           // Rectangle middleRec = new Rectangle(p.x + 15, p.y, p.width - 30, p.height);
 
-            Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
-
-            #region Paddle side collision code
-            if (canCollide == true)
+            if (ballRec.IntersectsWith(playerRec))
             {
-                if (ballRec.IntersectsWith(paddleRec))
+                if (ballRec.IntersectsWith(leftSide))
                 {
-                    ySpeed *= -1;
-                    canCollide = false;
-                }
-                foreach (Rectangle r in paddleRectangles)
-                {
-                    if (ballRec.IntersectsWith(r))
+                    // ySpeed *= -1;
+                    if (xSpeed > 0)
                     {
-                        xSpeed *= -1;
-                        canCollide = false;
+                        xSpeed *= -0.8f;
+                        ySpeed *= -1.1f;
+                    }
+                    else
+                    {
+                        xSpeed *= 1.1f;
+                        ySpeed *= -0.9f;
                     }
                 }
-            }
-            if (canCollide == false)
-            {
-                collisionTimer++;
-            }
-            #endregion
+                else if (ballRec.IntersectsWith(rightSide))
+                {
+                    if (xSpeed < 0)
+                    {
+                        xSpeed *= -0.8f;
+                        ySpeed *= -1.1f;
+                    }
+                    else
+                    {
+                        xSpeed *= 1.1f;
+                        ySpeed *= -0.9f;
+                    }
+                }
+                else
+                {
+                    ySpeed *= -1;
+                }
 
-            #region Collision timer
-            if (collisionTimer >= 50)
-            {
-                canCollide = true;
-                collisionTimer = 0;
+                if (xSpeed > 7)
+                {
+                    if (xSpeed > 0)
+                    {
+                        xSpeed = 6.5f;
+                    }
+                    else
+                    {
+                        xSpeed = -6.5f;
+                    }
+                }
+                if (ySpeed > Math.Abs(7))
+                {
+                    if (ySpeed > 0)
+                    {
+                        ySpeed = 6.5f;
+                    }
+                    else
+                    {
+                        ySpeed = -6.5f;
+                    }
+                }
+                return true;
             }
+            else
+            {
+                return false;
+            }
+
+            //    List<Rectangle> paddleRectangles = new List<Rectangle>();
+            //    Rectangle leftSideRec = new Rectangle(p.x - 3, p.y, 3, p.height);
+            //    Rectangle rightSideRec = new Rectangle(p.x + p.width + 3, p.y, 3, p.height);
+
+            //    paddleRectangles.Add(leftSideRec);
+            //    paddleRectangles.Add(rightSideRec);
+
+            //    Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
+
+            //    #region Paddle side collision code
+            //    if (canCollide == true)
+            //    {
+            //        if (ballRec.IntersectsWith(paddleRec))
+            //        {
+            //            ySpeed *= -1;
+            //            canCollide = false;
+            //        }
+            //        foreach (Rectangle r in paddleRectangles)
+            //        {
+            //            if (ballRec.IntersectsWith(r))
+            //            {
+            //                xSpeed *= -1;
+            //                canCollide = false;
+            //            }
+            //        }
+            //    }
+            //    if (canCollide == false)
+            //    {
+            //        collisionTimer++;
+            //    }
+            //    #endregion
+
+            //    #region Collision timer
+            //    if (collisionTimer >= 50)
+            //    {
+            //        canCollide = true;
+            //        collisionTimer = 0;
+            //    }
         }
 
         public void WallCollision(UserControl UC)
@@ -127,5 +209,5 @@ namespace BrickBreaker
         }
 
     }
-    #endregion
+    //#endregion
 }

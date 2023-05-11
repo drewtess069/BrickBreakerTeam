@@ -43,9 +43,8 @@
             // 
             this.hpInput.Location = new System.Drawing.Point(478, 639);
             this.hpInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-
             this.hpInput.Name = "hpInput";
-            this.hpInput.Size = new System.Drawing.Size(73, 20);
+            this.hpInput.Size = new System.Drawing.Size(73, 26);
             this.hpInput.TabIndex = 0;
             // 
             // button1
@@ -53,7 +52,6 @@
             this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.Location = new System.Drawing.Point(448, 673);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 73);
             this.button1.TabIndex = 1;
@@ -64,9 +62,8 @@
             // saveButton
             // 
             this.saveButton.BackColor = System.Drawing.SystemColors.Control;
-            this.saveButton.Location = new System.Drawing.Point(709, 673);
+            this.saveButton.Location = new System.Drawing.Point(876, 673);
             this.saveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(127, 73);
             this.saveButton.TabIndex = 2;
@@ -79,7 +76,6 @@
             this.loadButton.BackColor = System.Drawing.SystemColors.Control;
             this.loadButton.Location = new System.Drawing.Point(56, 673);
             this.loadButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(127, 73);
             this.loadButton.TabIndex = 3;
@@ -88,17 +84,7 @@
             // 
             // level1Button
             // 
-            /*this.exitButton.BackColor = System.Drawing.Color.LightSalmon;
-            this.exitButton.Location = new System.Drawing.Point(871, 673);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(141, 73);
-            this.exitButton.TabIndex = 4;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click); */
-
-            this.level1Button.Location = new System.Drawing.Point(27, 441);
+            this.level1Button.Location = new System.Drawing.Point(56, 587);
             this.level1Button.Name = "level1Button";
             this.level1Button.Size = new System.Drawing.Size(87, 29);
             this.level1Button.TabIndex = 4;
@@ -109,7 +95,7 @@
             // level5Button
             // 
             this.level5Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.level5Button.Location = new System.Drawing.Point(739, 441);
+            this.level5Button.Location = new System.Drawing.Point(916, 587);
             this.level5Button.Name = "level5Button";
             this.level5Button.Size = new System.Drawing.Size(87, 29);
             this.level5Button.TabIndex = 5;
@@ -119,7 +105,7 @@
             // 
             // level4Button
             // 
-            this.level4Button.Location = new System.Drawing.Point(549, 441);
+            this.level4Button.Location = new System.Drawing.Point(699, 587);
             this.level4Button.Name = "level4Button";
             this.level4Button.Size = new System.Drawing.Size(87, 29);
             this.level4Button.TabIndex = 6;
@@ -129,7 +115,7 @@
             // 
             // level3Button
             // 
-            this.level3Button.Location = new System.Drawing.Point(380, 441);
+            this.level3Button.Location = new System.Drawing.Point(470, 587);
             this.level3Button.Name = "level3Button";
             this.level3Button.Size = new System.Drawing.Size(87, 29);
             this.level3Button.TabIndex = 7;
@@ -139,7 +125,7 @@
             // 
             // level2Button
             // 
-            this.level2Button.Location = new System.Drawing.Point(199, 441);
+            this.level2Button.Location = new System.Drawing.Point(262, 587);
             this.level2Button.Name = "level2Button";
             this.level2Button.Size = new System.Drawing.Size(87, 29);
             this.level2Button.TabIndex = 8;
@@ -165,7 +151,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "levelDesign";
             this.Size = new System.Drawing.Size(1067, 800);
-
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.levelDesign_MouseClick);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.levelDesign_PreviewKeyDown);
             this.ResumeLayout(false);
