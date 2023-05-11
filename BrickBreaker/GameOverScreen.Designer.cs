@@ -33,6 +33,7 @@
             this.playAgainButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.menuButton = new System.Windows.Forms.Button();
+            this.leaderboardButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -106,11 +107,26 @@
             this.menuButton.UseVisualStyleBackColor = false;
             this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
+            // leaderboardButton
+            // 
+            this.leaderboardButton.BackColor = System.Drawing.Color.MediumPurple;
+            this.leaderboardButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.leaderboardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.leaderboardButton.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.leaderboardButton.Location = new System.Drawing.Point(400, 338);
+            this.leaderboardButton.Margin = new System.Windows.Forms.Padding(4);
+            this.leaderboardButton.Name = "leaderboardButton";
+            this.leaderboardButton.Size = new System.Drawing.Size(242, 37);
+            this.leaderboardButton.TabIndex = 10;
+            this.leaderboardButton.Text = "Leaderboard";
+            this.leaderboardButton.UseVisualStyleBackColor = false;
+            // 
             // GameOverScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.leaderboardButton);
             this.Controls.Add(this.menuButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playAgainButton);
@@ -128,5 +144,6 @@
         private System.Windows.Forms.Button playAgainButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button menuButton;
+        private System.Windows.Forms.Button leaderboardButton;
     }
 }

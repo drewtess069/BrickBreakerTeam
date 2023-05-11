@@ -86,7 +86,8 @@ namespace BrickBreaker
                     leaderboard.Add(newScore);
                 }
             }
-            leaderboard = leaderboard.OrderBy(x => x.score).ThenBy(x => x.nickname).ToList();
+            //leaderboard = leaderboard.OrderBy(x => x.score).ThenBy(x => x.nickname).ToList();
+            leaderboard = leaderboard.OrderBy(x => x.score).Reverse().ToList();
             foreach (HighScore h in leaderboard)
             {
                 leaderboardLabel.Text += $"\n {h.nickname} / {h.score}";

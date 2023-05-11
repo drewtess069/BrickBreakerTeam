@@ -5,11 +5,19 @@
     <score> 666</score>
   </highscore>
   <highscore>
-    <nickname>The happy grinner</nickname>
+    <nickname>The happy smiler</nickname>
     <score>545</score>
   </highscore>
   <highscore>
     <nickname>The sucky gamer</nickname>
     <score>-999</score>
+  </highscore>
+  <highscore>
+    <nickname>The newborn baby</nickname>
+    <score>-100</score>
+  </highscore>
+  <highscore>
+    <nickname>The ultimate scorer</nickname>
+    <score>5050</score>
   </highscore>
 </leaderboard>
