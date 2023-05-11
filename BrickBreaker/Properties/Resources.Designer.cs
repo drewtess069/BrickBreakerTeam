@@ -83,6 +83,16 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gaBackground2 {
+            get {
+                object obj = ResourceManager.GetObject("gaBackground2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap galagaBack {
             get {
                 object obj = ResourceManager.GetObject("galagaBack", resourceCulture);
@@ -125,7 +135,36 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Level&gt;&lt;Brick&gt;&lt;x&gt;115&lt;/x&gt;&lt;y&gt;327&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [Green]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;484&lt;/x&gt;&lt;y&gt;329&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [Green]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;626&lt;/x&gt;&lt;y&gt;337&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [Green]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;684&lt;/x&gt;&lt;y&gt;336&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [Green]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;544&lt;/x&gt;&lt;y&gt;332&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [Green]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;482&lt;/x&gt;&lt;y&gt;269&lt;/y&gt;&lt;hp&gt;3&lt;/hp&gt;&lt;colour&gt;Color [Green]&lt;/colour&gt;&lt;/Brick&gt;&lt;Brick&gt;&lt;x&gt;542&lt;/x&gt; [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Level&gt;
+        ///	&lt;test&gt;
+        ///		&lt;Brick&gt;
+        ///			&lt;x&gt;172&lt;/x&gt;
+        ///			&lt;y&gt;465&lt;/y&gt;
+        ///			&lt;hp&gt;5&lt;/hp&gt;
+        ///			&lt;colour&gt;Color [Blue]&lt;/colour&gt;
+        ///		&lt;/Brick&gt;
+        ///		&lt;Brick&gt;
+        ///			&lt;x&gt;280&lt;/x&gt;
+        ///			&lt;y&gt;469&lt;/y&gt;
+        ///			&lt;hp&gt;1&lt;/hp&gt;
+        ///			&lt;colour&gt;Color [DarkOrange]&lt;/colour&gt;
+        ///		&lt;/Brick&gt;
+        ///		&lt;Brick&gt;
+        ///			&lt;x&gt;344&lt;/x&gt;
+        ///			&lt;y&gt;388&lt;/y&gt;
+        ///			&lt;hp&gt;1&lt;/hp&gt;
+        ///			&lt;colour&gt;Color [DarkOrange]&lt;/colour&gt;
+        ///		&lt;/Brick&gt;
+        ///		&lt;Brick&gt;
+        ///			&lt;x&gt;414&lt;/x&gt;
+        ///			&lt;y&gt;26&lt;/y&gt;
+        ///			&lt;hp&gt;3&lt;/hp&gt;
+        ///			&lt;colour&gt;Color [Aqua]&lt;/colour&gt;
+        ///		&lt;/Brick&gt;
+        ///		&lt;Brick&gt;
+        ///			&lt;x&gt;358&lt;/x&gt;
+        ///			&lt;y&gt;26&lt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string level1XML {
             get {
@@ -135,7 +174,36 @@ namespace BrickBreaker.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///.
+        ///&lt;Level&gt;
+        ///		&lt;Brick&gt;
+        ///			&lt;x&gt;376&lt;/x&gt;
+        ///			&lt;y&gt;22&lt;/y&gt;
+        ///			&lt;hp&gt;5&lt;/hp&gt;
+        ///			&lt;colour&gt;DarkOrchid&lt;/colour&gt;
+        ///		&lt;/Brick&gt;
+        ///		&lt;Brick&gt;
+        ///			&lt;x&gt;302&lt;/x&gt;
+        ///			&lt;y&gt;274&lt;/y&gt;
+        ///			&lt;hp&gt;3&lt;/hp&gt;
+        ///			&lt;colour&gt;DarkOrchid&lt;/colour&gt;
+        ///		&lt;/Brick&gt;
+        ///		&lt;Brick&gt;
+        ///			&lt;x&gt;653&lt;/x&gt;
+        ///			&lt;y&gt;22&lt;/y&gt;
+        ///			&lt;hp&gt;3&lt;/hp&gt;
+        ///			&lt;colour&gt;Gray&lt;/colour&gt;
+        ///		&lt;/Brick&gt;
+        ///		&lt;Brick&gt;
+        ///			&lt;x&gt;562&lt;/x&gt;
+        ///			&lt;y&gt;22&lt;/y&gt;
+        ///			&lt;hp&gt;5&lt;/hp&gt;
+        ///			&lt;colour&gt;Gray&lt;/colour&gt;
+        ///		&lt;/Brick&gt;
+        ///		&lt;Brick&gt;
+        ///			&lt;x&gt;570&lt;/x&gt;
+        ///			&lt;y&gt;272&lt;/y&gt;
+        ///			&lt;hp&gt;5&lt;/hp&gt;
+        ///			&lt;colour&gt;Red&lt;/colour [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string level2XML {
             get {
@@ -219,6 +287,16 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap thefinalball {
             get {
                 object obj = ResourceManager.GetObject("thefinalball", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tsback {
+            get {
+                object obj = ResourceManager.GetObject("tsback", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
