@@ -136,8 +136,8 @@ namespace BrickBreaker
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-             xSpeed = 6;
-             ySpeed = -6;
+             xSpeed = 5;
+             ySpeed = -5;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
@@ -371,17 +371,37 @@ namespace BrickBreaker
             }
 
             // Check for collision of ball with paddle, (incl. paddle movement)
-            if (ballDown == true)
-            {
-                ball.PaddleCollision(paddle);
-            }
+            //if (ySpeed > 0)
+            //{
+                if (ball.PaddleCollision(paddle))
+                {
+                    ball.y = paddle.y - ball.size-1;
+                }
+           // }
 
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
             {
                 if (ball.BlockCollision(b))
                 {
-                    blocks.Remove(b);
+                    if (b.hp == 1)
+                    {
+                        blocks.Remove(b);
+
+                        valu = 2;//valu = rnd.Next(0, 3); 
+                        if (valu == 2)
+                        {
+                            PowerUp newPowerUp = new PowerUp(0, 0, 0, 3, null, null, true, 12, 12);
+                            newPowerUp.newBall(b.x, b.y, b.width, b.height, lazerList);
+                            powerUpList.Add(newPowerUp);
+                        }
+                    }
+                    else
+                    {
+                        b.hp--;
+
+                        BrickColorChange(b);
+                    }
                     //score++;
                     ScoreAndLives(); // display updated score
 
@@ -393,6 +413,7 @@ namespace BrickBreaker
                         OnEnd();
                     }
 
+
                     valu = rnd.Next(0, 3); 
                     if (valu == 2)
                     {
@@ -400,6 +421,7 @@ namespace BrickBreaker
                         newPowerUp.newBall(b.x, b.y, b.width, b.height, lazerList);
                         powerUpList.Add(newPowerUp);    
                     }
+
                     break;
                 }
             }
@@ -435,8 +457,8 @@ namespace BrickBreaker
                     }
                     else if (p.type == "slowBall")
                     {
-                        ball.xSpeed /= 2;
-                        ball.ySpeed /= 2;
+                        ball.xSpeed /= 1.2f;
+                        ball.ySpeed /= 1.2f;
                     }
                     else if (p.type == "newLife")
                     {
@@ -678,8 +700,23 @@ namespace BrickBreaker
 
                     Color colour = Color.FromName(colourString);
 
-                    Block newBlock = new Block(Convert.ToInt16(x), Convert.ToInt16(y) + 20, Convert.ToInt16(hp), colour);
-                    blocks.Add(newBlock);
+                    //Align bricks with image
+                    if (this.BackgroundImage == Properties.Resources.donkeykong)
+                    {
+                        Block newBlock = new Block(Convert.ToInt16(x), Convert.ToInt16(y) + 20, Convert.ToInt16(hp), colour);
+                        blocks.Add(newBlock);
+                    }
+                    else if(this.BackgroundImage == Properties.Resources.gaBackground2)
+                    {
+                        Block newBlock = new Block(Convert.ToInt16(x), Convert.ToInt16(y) - 6, Convert.ToInt16(hp), colour);
+                        blocks.Add(newBlock);
+                    }
+                    else
+                    {
+                        Block newBlock = new Block(Convert.ToInt16(x), Convert.ToInt16(y) +5, Convert.ToInt16(hp), colour);
+                        blocks.Add(newBlock);
+                    }
+              
                 }
             }
             reader.Close();
@@ -782,6 +819,54 @@ namespace BrickBreaker
             //resets ball speed 
             ball.xSpeed = xSpeed; 
             ball.ySpeed = ySpeed;
+        }
+
+        public static void BrickColorChange(Block b)
+        {
+            if (b.colour == Color.DeepPink)
+            {
+                b.colour = Color.LightCoral;
+            }
+            else if (b.colour == Color.Aqua)
+            {
+                b.colour = Color.Cyan;
+            }
+            else if (b.colour == Color.DarkOrange)
+            {
+                b.colour = Color.Orange;
+            }
+            else if (b.colour == Color.Gold)
+            {
+                b.colour = Color.LightYellow;
+            }
+            else if (b.colour == Color.Red)
+            {
+                b.colour = Color.Salmon;
+            }
+            else if(b.colour == Color.Gray)
+            {
+                b.colour = Color.SlateGray;
+            }
+            else if(b.colour == Color.SlateGray)
+            {
+                b.colour = Color.DimGray;
+            }
+            else if(b.colour == Color.DimGray)
+            {
+                b.colour = Color.LightGray;
+            }
+            else if(b.colour == Color.LightGray)
+            {
+                b.colour = Color.White;
+            }
+            else if(b.colour == Color.DarkOrchid)
+            {
+                b.colour = Color.Orchid;
+            }
+            if(b.colour == Color.Orchid)
+            {
+                b.colour = Color.Magenta;
+            }
         }
     }
     #endregion

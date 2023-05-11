@@ -49,6 +49,7 @@ namespace BrickBreaker
                 if (lazerRec.IntersectsWith(blockRec))
                 {
                     block.hp--;
+                    GameScreen.BrickColorChange(block);
                 }
                 if (block.hp == 0)
                 {
