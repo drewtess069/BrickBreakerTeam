@@ -221,12 +221,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.life2);
             this.Controls.Add(this.life3);
             this.Controls.Add(this.life4);
             this.Controls.Add(this.life5);
             this.Controls.Add(this.life1);
-            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.menuButton);
             this.Controls.Add(this.pauseMenuLabel);
             this.Controls.Add(this.pauseButton);
