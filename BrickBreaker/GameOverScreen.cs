@@ -51,6 +51,14 @@ namespace BrickBreaker
         private void leaderboardButton_Click(object sender, EventArgs e)
         {
             Form1.ChangeScreen(this, new EndScreen());
+            // please leave this in somewhere, feel free to change the design accordingly but please leave it in
+            // as long as the leaderboard screen is clearly accessible to the player.
+        }
+
+        private void resultsLabel_Click(object sender, EventArgs e)
+        {
+            Form1.ChangeScreen(this, new EndScreen());
+            // for testing purposes, feel free to remove this event if the leaderboard button is implemented
         }
     }
 }

@@ -71,7 +71,7 @@
             // 
             // endLabel
             // 
-            this.endLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endLabel.Font = new System.Drawing.Font("Magneto", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endLabel.ForeColor = System.Drawing.Color.LightSalmon;
             this.endLabel.Location = new System.Drawing.Point(0, 24);
             this.endLabel.Name = "endLabel";
@@ -88,8 +88,7 @@
             this.submitNameLabel.Name = "submitNameLabel";
             this.submitNameLabel.Size = new System.Drawing.Size(295, 32);
             this.submitNameLabel.TabIndex = 4;
-            this.submitNameLabel.Text = "Type your name here...";
-            this.submitNameLabel.TextChanged += new System.EventHandler(this.submitNameLabel_TextChanged);
+             ///this.submitNameLabel.TextChanged += new System.EventHandler(this.submitNameLabel_TextChanged);
             // 
             // leaderboardLabel
             // 
