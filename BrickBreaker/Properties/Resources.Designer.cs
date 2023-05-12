@@ -320,5 +320,25 @@ namespace BrickBreaker.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zlbackground_1078__800_at__3__0_ {
+            get {
+                object obj = ResourceManager.GetObject("zlbackground_1078__800_at__3__0_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zlpaddle {
+            get {
+                object obj = ResourceManager.GetObject("zlpaddle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

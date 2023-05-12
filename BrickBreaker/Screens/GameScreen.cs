@@ -137,18 +137,18 @@ namespace BrickBreaker
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            xSpeed = 6;
-            ySpeed = -6;
+            xSpeed = 5;
+            ySpeed = -5;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
-            this.BackgroundImage = Properties.Resources.gaBackground2;
+            this.BackgroundImage = Properties.Resources.pmBack;
 
-            paddleImage = Properties.Resources.gapaddle2;
+            paddleImage = Properties.Resources.zlpaddle;
 
 
 
-            loadLevel("level2XML");
+            loadLevel("level4XML");
             //ColourBricks(Color.LightCoral,Color.Pink,Color.Red,Color.Orange,Color.Yellow);
             //#region Creates blocks for generic level. Need to replace with code that loads levels.
 
@@ -191,7 +191,7 @@ namespace BrickBreaker
             else if (state == "level 3")
             {
                 state = "level 4";
-                loadLevel("level2XML");
+                loadLevel("level1XML");
                 this.BackgroundImage = Properties.Resources.donkeykong;
                 paddleImage = Properties.Resources.dkpaddle2;
             }
@@ -232,8 +232,8 @@ namespace BrickBreaker
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            xSpeed = 6;
-            ySpeed = -6;
+            xSpeed = 5;
+            ySpeed = -5;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
