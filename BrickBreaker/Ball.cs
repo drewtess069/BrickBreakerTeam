@@ -68,6 +68,12 @@ namespace BrickBreaker
 
         public bool PaddleCollision(Paddle p)
         {
+
+            if (Math.Abs(xSpeed) <= 1)
+            {
+                xSpeed++;
+            }
+
             Rectangle ballRec = new Rectangle(x, y, size, size);
 
             Rectangle playerRec = new Rectangle(p.x, p.y, p.width, p.height);

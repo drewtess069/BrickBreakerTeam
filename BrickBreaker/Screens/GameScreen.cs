@@ -404,7 +404,6 @@ namespace BrickBreaker
                     ScoreAndLives(); // display updated score
 
                     score += 100;
-
                     break;
                 }
             }
