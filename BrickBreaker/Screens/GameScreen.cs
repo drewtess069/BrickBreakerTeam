@@ -137,8 +137,8 @@ namespace BrickBreaker
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            xSpeed = 6;
-            ySpeed = -6;
+            xSpeed = 5;
+            ySpeed = -5;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
@@ -179,21 +179,24 @@ namespace BrickBreaker
                 loadLevel("level4XML");
                 this.BackgroundImage = Properties.Resources.pmBack;
                 paddleImage = Properties.Resources.pmpaddle2;
+
+                loadLevel("level1XML");
+                this.BackgroundImage = Properties.Resources.donkeykong;
+                paddleImage = Properties.Resources.dkpaddle2;
             }
             else if (state == "level 2")
             {
-                //zelda level here
-                //state = "level 3";
-                //loadLevel("level2XML");
-                //this.BackgroundImage = Properties.Resources.galagaBack;
-                //paddleImage = Properties.Resources.gapaddle2;
+                state = "level 3";
+                loadLevel("level4XML");
+                this.BackgroundImage = Properties.Resources.pmBack;
+                paddleImage = Properties.Resources.pmpaddle2;
             }
             else if (state == "level 3")
             {
                 state = "level 4";
-                loadLevel("level2XML");
-                this.BackgroundImage = Properties.Resources.donkeykong;
-                paddleImage = Properties.Resources.dkpaddle2;
+                loadLevel("level5XML");
+                this.BackgroundImage = Properties.Resources.zlbackground_1078__800_at__3__0_;
+                paddleImage = Properties.Resources.zlpaddle;
             }
             else if (state == "level 4")
             {
@@ -232,8 +235,8 @@ namespace BrickBreaker
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            xSpeed = 6;
-            ySpeed = -6;
+            xSpeed = 5;
+            ySpeed = -5;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
@@ -293,13 +296,13 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            
+
             //very start of engine
             Rectangle newPaddle = new Rectangle(paddle.x, paddle.y, paddle.width, paddle.height);
 
-            if(reset == true)
+            if (reset == true)
             {
-                if(spaceDown == true)
+                if (spaceDown == true)
                 {
                     reset = false;
                     ball.xSpeed = 6;
@@ -343,10 +346,10 @@ namespace BrickBreaker
 
                 #region pausing game and playing again with spacebar
 
-                if(lives != 0)
+                if (lives != 0)
                 {
                     reset = true;
-                    ball.x = paddle.x + (paddle.width/2) - (ball.size/2);
+                    ball.x = paddle.x + (paddle.width / 2) - (ball.size / 2);
                     ball.y = paddle.y - ball.size - 3;
 
                     xSpeed = 0;
@@ -383,7 +386,7 @@ namespace BrickBreaker
                     {
                         blocks.Remove(b);
 
-                        valu = rnd.Next(0, 3); 
+                        valu = rnd.Next(0, 3);
                         if (valu == 2)
                         {
                             PowerUp newPowerUp = new PowerUp(0, 0, 0, 3, null, null, true, 12, 12);
@@ -814,7 +817,7 @@ namespace BrickBreaker
             }
             else if (b.colour == Color.Aqua)
             {
-                b.colour = Color.Cyan;
+                b.colour = Color.LightBlue;
             }
             else if (b.colour == Color.DarkOrange)
             {
@@ -848,9 +851,45 @@ namespace BrickBreaker
             {
                 b.colour = Color.Orchid;
             }
-            if (b.colour == Color.Orchid)
+            else if (b.colour == Color.Orchid)
             {
                 b.colour = Color.Magenta;
+            }
+            else if (b.colour == Color.OrangeRed)
+            {
+                b.colour = Color.Orange;
+            }
+            else if (b.colour == Color.Orange)
+            {
+                b.colour = Color.Yellow;
+            }
+            else if (b.colour == Color.DarkGreen)
+            {
+                b.colour = Color.LightGreen;
+            }
+            else if (b.colour == Color.Pink)
+            {
+                b.colour = Color.White;
+            }
+           else  if (b.colour == Color.DarkRed)
+            {
+                b.colour = Color.Red;
+            }
+            else if(b.colour == Color.Red)
+            {
+                b.colour = Color.LightCoral;
+            }
+            else if(b.colour == Color.MediumBlue)
+            {
+                b.colour = Color.SkyBlue;
+            }
+            else if(b.colour == Color.White)
+            {
+                b.colour = Color.WhiteSmoke;
+            }
+            else
+            {
+                b.colour = Color.White;
             }
         }
         public void currentLevel()
