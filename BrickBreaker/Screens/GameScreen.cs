@@ -10,9 +10,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.Media;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using System.IO;
 
 namespace BrickBreaker
 {
@@ -23,6 +25,9 @@ namespace BrickBreaker
         //player1 button control keys - DO NOT CHANGE
         Boolean leftArrowDown, rightArrowDown, spaceDown;
 
+        //sounds
+        SoundPlayer brickBreak = new SoundPlayer(Properties.Resources.brickBreak);
+        System.Media.SoundPlayer musicLoop = new System.Media.SoundPlayer("Properties.Resources.musicLoop.wav");
 
         // Game values
         int lives;
@@ -91,6 +96,10 @@ namespace BrickBreaker
             lives = 3;
             score = 0;
 
+            ///background music loop code
+            //musicLoop.PlayLooping();
+            //musicLoop.Play();
+
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
 
@@ -155,11 +164,8 @@ namespace BrickBreaker
                     rightArrowDown = true;
                     break;
                 case Keys.Space:
-
                     spaceDown = true;
                     break; 
-
-
                 default:
                     break;
             }
@@ -177,7 +183,6 @@ namespace BrickBreaker
                     rightArrowDown = false;
                     break;
                 case Keys.Space:
-
                     spaceDown = false;
                     break;
                 case Keys.Escape:
@@ -223,6 +228,11 @@ namespace BrickBreaker
                 ball.xSpeed = 6;
                 ball.ySpeed = -6;
             }
+            if (state == "startOff")
+            {
+                ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
+                ball.y = (this.Height - paddle.height) - 85;
+            }
 
             // Check for ball hitting bottom of screen
             if (ball.BottomCollision(this))
@@ -241,8 +251,7 @@ namespace BrickBreaker
                 if (state == "startOff")
                 {
                     ball.stasis();
-                    ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-                    ball.y = (this.Height - paddle.height) - 85;
+                    
                 }
 
                 // Check for ball hitting bottom of screen
@@ -267,6 +276,7 @@ namespace BrickBreaker
                 if (ball.BlockCollision(b))
                 {
                     blocks.Remove(b);
+                    brickBreak.Play();
                     score++;
                     ScoreAndLives(); // display updated score
 

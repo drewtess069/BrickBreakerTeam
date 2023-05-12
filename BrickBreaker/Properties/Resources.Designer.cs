@@ -61,6 +61,15 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream brickBreak {
+            get {
+                return ResourceManager.GetStream("brickBreak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap dkpaddle2 {
@@ -170,6 +179,25 @@ namespace BrickBreaker.Properties {
             get {
                 object obj = ResourceManager.GetObject("menuBack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] musicLoop {
+            get {
+                object obj = ResourceManager.GetObject("musicLoop", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream paddleHit {
+            get {
+                return ResourceManager.GetStream("paddleHit", resourceCulture);
             }
         }
         

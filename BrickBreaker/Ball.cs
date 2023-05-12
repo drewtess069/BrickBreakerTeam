@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Media;
 
 //latest
 
@@ -15,6 +16,7 @@ namespace BrickBreaker
         public static Random rand = new Random();
         public bool canCollide = true;
         public int collisionTimer;
+        SoundPlayer paddleHit = new SoundPlayer(Properties.Resources.paddleHit);
 
         public Ball(int _x, int _y, int _xSpeed, int _ySpeed, int _ballSize)
         {
@@ -52,7 +54,7 @@ namespace BrickBreaker
             return blockRec.IntersectsWith(ballRec);
         }
 
-        public void PaddleCollision(Paddle p)
+        public bool PaddleCollision(Paddle p)
         {
             Rectangle ballRec = new Rectangle(x, y, size, size);
             List<Rectangle> paddleRectangles = new List<Rectangle>();
@@ -63,6 +65,9 @@ namespace BrickBreaker
             paddleRectangles.Add(rightSideRec);
 
             Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
+
+
+
 
             #region Paddle side collision code
             if (canCollide == true)
@@ -93,6 +98,13 @@ namespace BrickBreaker
                 canCollide = true;
                 collisionTimer = 0;
             }
+
+            if (ballRec.IntersectsWith(paddleRec))
+            {
+                paddleHit.Play();
+            }
+
+            return paddleRec.IntersectsWith(ballRec);
         }
 
         public void WallCollision(UserControl UC)
@@ -128,4 +140,6 @@ namespace BrickBreaker
 
     }
     #endregion
+
+    
 }
