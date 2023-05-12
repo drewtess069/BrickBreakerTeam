@@ -37,6 +37,7 @@ namespace BrickBreaker
         {
             xSpeed = 0;
             ySpeed = 0;
+            GameScreen.state = "startoff";
 
         }
 
@@ -132,10 +133,17 @@ namespace BrickBreaker
                 }
                 return true;
             }
-            else
-            {
+            //if (xSpeed == Math.Round(xSpeed, 0))
+            //{
+            //    xSpeed = 4;
+            //}
+            //if (ySpeed == Math.Round(xSpeed, 0))
+            //{
+            //    ySpeed = 4;
+            //}
+
                 return false;
-            }
+            
 
             //    List<Rectangle> paddleRectangles = new List<Rectangle>();
             //    Rectangle leftSideRec = new Rectangle(p.x - 3, p.y, 3, p.height);
