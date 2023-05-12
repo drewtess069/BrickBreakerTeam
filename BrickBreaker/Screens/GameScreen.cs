@@ -383,7 +383,7 @@ namespace BrickBreaker
                     {
                         blocks.Remove(b);
 
-                        valu = 2;//valu = rnd.Next(0, 3); 
+                        valu = rnd.Next(0, 3); 
                         if (valu == 2)
                         {
                             PowerUp newPowerUp = new PowerUp(0, 0, 0, 3, null, null, true, 12, 12);
@@ -401,7 +401,6 @@ namespace BrickBreaker
                     ScoreAndLives(); // display updated score
 
                     score += 100;
-
 
                     valu = rnd.Next(0, 3);
                     if (valu == 2)
