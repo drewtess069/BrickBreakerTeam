@@ -1,7 +1,7 @@
 ﻿/*  Created by: 
  *  Project: Brick Breaker
  *  Date: May 03
- */ 
+ */
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +15,7 @@ using System.Media;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.Xml;
 using BrickBreaker.BrickBreaker;
+using System.Threading;
 
 namespace BrickBreaker
 {
@@ -29,12 +30,12 @@ namespace BrickBreaker
         // Game values
         int lives;
         public static int score = 0;
-        string state;
+        public static string state;
 
         Image paddleImage;
 
         // Paddle and Ball objects
-        
+
         Ball ball;
         //bool ballMove = true;
 
@@ -46,7 +47,7 @@ namespace BrickBreaker
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
         SolidBrush alphaBrush = new SolidBrush(Color.Blue);
-        SolidBrush greenBrush = new SolidBrush (Color.Green);
+        SolidBrush greenBrush = new SolidBrush(Color.Green);
 
         // random
         Random rnd = new Random();
@@ -62,8 +63,8 @@ namespace BrickBreaker
 
         int alpha = 0;
         int alpha2 = 150;
-     
 
+        bool reset = false;
         // lists
         //List<PowerUp> powerUpList = new List<PowerUp>();
         //List<Lazer> lazerList = new List<Lazer> ();
@@ -123,7 +124,7 @@ namespace BrickBreaker
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
             midPaddle = new Rectangle(paddle.x - 3, paddle.y, paddle.width + 3, paddle.height);
 
-            midPaddle = new Rectangle(paddle.x, paddle.y, paddle.width, paddle.height); 
+            midPaddle = new Rectangle(paddle.x, paddle.y, paddle.width, paddle.height);
             leftSideRec = new Rectangle(paddle.x - 3, paddle.y, 3, paddle.height);
             rightSideRec = new Rectangle(paddle.x + paddle.width + 3, paddle.y, 3, paddle.height);
 
@@ -136,18 +137,18 @@ namespace BrickBreaker
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-             xSpeed = 5;
-             ySpeed = -5;
+            xSpeed = 6;
+            ySpeed = -6;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
-            this.BackgroundImage = Properties.Resources.donkeykong;
+            this.BackgroundImage = Properties.Resources.gaBackground2;
 
-            paddleImage = Properties.Resources.dkpaddle2;
+            paddleImage = Properties.Resources.gapaddle2;
 
 
-            
-            loadLevel("level1XML");
+
+            loadLevel("level2XML");
             //ColourBricks(Color.LightCoral,Color.Pink,Color.Red,Color.Orange,Color.Yellow);
             //#region Creates blocks for generic level. Need to replace with code that loads levels.
 
@@ -175,28 +176,31 @@ namespace BrickBreaker
             if (state == "level 1")
             {
                 state = "level 2";
-                loadLevel("level2XML");
-                this.BackgroundImage = Properties.Resources.tetris;
-                paddleImage = Properties.Resources.tspaddle2;
+                loadLevel("level4XML");
+                this.BackgroundImage = Properties.Resources.pmBack;
+                paddleImage = Properties.Resources.pmpaddle2;
             }
             else if (state == "level 2")
             {
-                state = "level 3";
-                loadLevel("level3XML");
-                this.BackgroundImage = Properties.Resources.galagaBack;
-                paddleImage = Properties.Resources.gapaddle2;
+                //zelda level here
+                //state = "level 3";
+                //loadLevel("level2XML");
+                //this.BackgroundImage = Properties.Resources.galagaBack;
+                //paddleImage = Properties.Resources.gapaddle2;
             }
             else if (state == "level 3")
             {
                 state = "level 4";
-                loadLevel("level4XML");
-                this.BackgroundImage = Properties.Resources.pacmanback;
-                paddleImage = Properties.Resources.pmpaddle2;
+                loadLevel("level2XML");
+                this.BackgroundImage = Properties.Resources.donkeykong;
+                paddleImage = Properties.Resources.dkpaddle2;
             }
             else if (state == "level 4")
             {
                 state = "level 5";
-                loadLevel("level5XML");
+                loadLevel("level3XML");
+                this.BackgroundImage = Properties.Resources.tetris;
+                paddleImage = Properties.Resources.tspaddle2;
             }
             else if (state == "level 5")
             {
@@ -234,23 +238,6 @@ namespace BrickBreaker
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
 
-            #region Creates blocks for generic level. Need to replace with code that loads levels.
-
-            //TODO - replace all the code in this region eventually with code that loads levels from xml files
-
-            blocks.Clear();
-            int x = 10;
-
-            while (blocks.Count < 12)
-            {
-                x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White);
-                blocks.Add(b1);
-            }
-
-            #endregion
-
-
             // start the game engine loop
             gameTimer.Enabled = true;
         }
@@ -267,9 +254,12 @@ namespace BrickBreaker
                     rightArrowDown = true;
                     break;
                 case Keys.Space:
-
                     spaceDown = true;
-                    break; 
+                    if (gameTimer.Enabled == false)
+                    {
+                        gameTimer.Enabled = true;
+                    }
+                    break;
 
 
                 default:
@@ -303,8 +293,19 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            
             //very start of engine
             Rectangle newPaddle = new Rectangle(paddle.x, paddle.y, paddle.width, paddle.height);
+
+            if(reset == true)
+            {
+                if(spaceDown == true)
+                {
+                    reset = false;
+                    ball.xSpeed = 6;
+                    ball.ySpeed = 6;
+                }
+            }
 
             if (ball.ySpeed > 0)
             {
@@ -332,12 +333,6 @@ namespace BrickBreaker
 
             // Check for collision with top and side walls
             ball.WallCollision(this);
-            if (state == "startOff" && spaceDown == true)
-            {
-                state = "playing";
-                ball.xSpeed = 6;
-                ball.ySpeed = -6;
-            }
 
             // Check for ball hitting bottom of screen
             if (ball.BottomCollision(this))
@@ -345,19 +340,17 @@ namespace BrickBreaker
                 lives--;
                 score -= 200;
                 ScoreAndLives(); //display updated lives count
-                state = "startOff";
 
                 #region pausing game and playing again with spacebar
-                if (state == "playing")
-                {
-                    ball.Move();
 
-                }
-                if (state == "startOff")
+                if(lives != 0)
                 {
-                    ball.stasis();
-                    ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-                    ball.y = (this.Height - paddle.height) - 85;
+                    reset = true;
+                    ball.x = paddle.x + (paddle.width/2) - (ball.size/2);
+                    ball.y = paddle.y - ball.size - 3;
+
+                    xSpeed = 0;
+                    ySpeed = 0;
                 }
 
                 // Check for ball hitting bottom of screen
@@ -368,16 +361,18 @@ namespace BrickBreaker
                     gameTimer.Enabled = false;
                     OnEnd();
                 }
+
+                this.Focus();
             }
 
             // Check for collision of ball with paddle, (incl. paddle movement)
             //if (ySpeed > 0)
             //{
-                if (ball.PaddleCollision(paddle))
-                {
-                    ball.y = paddle.y - ball.size-1;
-                }
-           // }
+            if (ball.PaddleCollision(paddle))
+            {
+                ball.y = paddle.y - ball.size - 1;
+            }
+            // }
 
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
@@ -388,7 +383,7 @@ namespace BrickBreaker
                     {
                         blocks.Remove(b);
 
-                        valu = 2;//valu = rnd.Next(0, 3); 
+                        valu = rnd.Next(0, 3); 
                         if (valu == 2)
                         {
                             PowerUp newPowerUp = new PowerUp(0, 0, 0, 3, null, null, true, 12, 12);
@@ -407,23 +402,23 @@ namespace BrickBreaker
 
                     score += 100;
 
-                    if (blocks.Count == 0)
-                    {
-                        gameTimer.Enabled = false;
-                        OnEnd();
-                    }
-
-
-                    valu = rnd.Next(0, 3); 
+                    valu = rnd.Next(0, 3);
                     if (valu == 2)
                     {
                         PowerUp newPowerUp = new PowerUp(0, 0, 0, 3, null, null, true, 12, 12);
                         newPowerUp.newBall(b.x, b.y, b.width, b.height, lazerList);
-                        powerUpList.Add(newPowerUp);    
+                        powerUpList.Add(newPowerUp);
                     }
 
                     break;
                 }
+            }
+
+            if (blocks.Count == 0)
+            {
+                gameTimer.Enabled = false;
+                OnEnd();
+                NextLevel();
             }
 
             //powerup collision, movement and consequence
@@ -440,7 +435,7 @@ namespace BrickBreaker
 
                     if (p.type == "longPaddle")
                     {
-                        longPaddle = true; 
+                        longPaddle = true;
                         int paddleLenght = 20;
                         if (paddle.x < 10)
                         {
@@ -522,24 +517,24 @@ namespace BrickBreaker
                     }
                 }
             }
-            
+
             //long paddle color change
             if (alpha2 == 200)
             {
-                toggle = false; 
+                toggle = false;
             }
             else if (alpha2 == 100)
             {
-                toggle = true; 
+                toggle = true;
             }
 
             if (toggle == true)
             {
-                alpha2++; 
+                alpha2++;
             }
             else if (toggle == false)
             {
-                alpha2--; 
+                alpha2--;
             }
 
 
@@ -605,7 +600,7 @@ namespace BrickBreaker
             menuButton.Enabled = true;
             exitButton.Enabled = true;
 
-            pauseMenuLabel.Text = $"\nGAME PAUSED\n\nLevel [level]\n{lives} lives left\n\n\n\nCLICK TO RETURN";
+            pauseMenuLabel.Text = $"\nGAME PAUSED\n\n{state}\n{lives} lives Remaining";
             Refresh();
         }
 
@@ -633,13 +628,13 @@ namespace BrickBreaker
 
         public void ColourBricks(Color colour1, Color colour2, Color colour3, Color colour4, Color colour5)
         {
-            foreach(Block b in blocks)
+            foreach (Block b in blocks)
             {
-                if(b.hp == 1)
+                if (b.hp == 1)
                 {
                     b.colour = colour1;
                 }
-                else if(b.hp == 3)
+                else if (b.hp == 3)
                 {
                     b.colour = colour3;
                 }
@@ -659,23 +654,22 @@ namespace BrickBreaker
             if (lives != 0)
             {
                 resetPowers();
-                NextLevel();
             }
             else
             {
-                resetPowers(); 
+                resetPowers();
                 Form1.ChangeScreen(this, new GameOverScreen());
             }
 
-           // // Goes to the game over screen
-           // Form form = this.FindForm();
-           // GameOverScreen gos = new GameOverScreen();
+            // // Goes to the game over screen
+            // Form form = this.FindForm();
+            // GameOverScreen gos = new GameOverScreen();
 
-           // gos.Location = new Point((form.Width - gos.Width) / 2, (form.Height - gos.Height) / 2);
+            // gos.Location = new Point((form.Width - gos.Width) / 2, (form.Height - gos.Height) / 2);
 
-           // form.Controls.Add(gos);
-           // form.Controls.Remove(this);
-           //// Form1.ChangeScreen(this, new EndScreen());
+            // form.Controls.Add(gos);
+            // form.Controls.Remove(this);
+            //// Form1.ChangeScreen(this, new EndScreen());
         }
 
         public void loadLevel(string xml)
@@ -706,17 +700,17 @@ namespace BrickBreaker
                         Block newBlock = new Block(Convert.ToInt16(x), Convert.ToInt16(y) + 20, Convert.ToInt16(hp), colour);
                         blocks.Add(newBlock);
                     }
-                    else if(this.BackgroundImage == Properties.Resources.gaBackground2)
+                    else if (this.BackgroundImage == Properties.Resources.gaBackground2)
                     {
                         Block newBlock = new Block(Convert.ToInt16(x), Convert.ToInt16(y) - 6, Convert.ToInt16(hp), colour);
                         blocks.Add(newBlock);
                     }
                     else
                     {
-                        Block newBlock = new Block(Convert.ToInt16(x), Convert.ToInt16(y) +5, Convert.ToInt16(hp), colour);
+                        Block newBlock = new Block(Convert.ToInt16(x), Convert.ToInt16(y) + 5, Convert.ToInt16(hp), colour);
                         blocks.Add(newBlock);
                     }
-              
+
                 }
             }
             reader.Close();
@@ -745,7 +739,7 @@ namespace BrickBreaker
 
 
             e.Graphics.DrawImage(paddleImage, paddle.x + paddle.width / 2 - 40, paddle.y);
-          
+
             // Draws blocks
             foreach (Block b in blocks)
             {
@@ -794,7 +788,7 @@ namespace BrickBreaker
             }
 
             Color bl = Color.FromArgb(alpha2, Color.Green);
-            alphaBrush.Color = bl; 
+            alphaBrush.Color = bl;
             if (longPaddle == true)
             {
                 e.Graphics.FillRectangle(alphaBrush, paddle.x, paddle.y, paddle.width, paddle.height);
@@ -807,17 +801,17 @@ namespace BrickBreaker
             //resets paddle dimensions =
             paddle.width = 80;
             paddle.height = 20;
-            longPaddle = false; 
-            
+            longPaddle = false;
+
             //removes lazer
-            foreach(Lazer l in lazerList)
+            foreach (Lazer l in lazerList)
             {
                 lazerList.Remove(l);
-                break; 
+                break;
             }
 
             //resets ball speed 
-            ball.xSpeed = xSpeed; 
+            ball.xSpeed = xSpeed;
             ball.ySpeed = ySpeed;
         }
 
@@ -843,29 +837,52 @@ namespace BrickBreaker
             {
                 b.colour = Color.Salmon;
             }
-            else if(b.colour == Color.Gray)
+            else if (b.colour == Color.Gray)
             {
                 b.colour = Color.SlateGray;
             }
-            else if(b.colour == Color.SlateGray)
+            else if (b.colour == Color.SlateGray)
             {
                 b.colour = Color.DimGray;
             }
-            else if(b.colour == Color.DimGray)
+            else if (b.colour == Color.DimGray)
             {
                 b.colour = Color.LightGray;
             }
-            else if(b.colour == Color.LightGray)
+            else if (b.colour == Color.LightGray)
             {
                 b.colour = Color.White;
             }
-            else if(b.colour == Color.DarkOrchid)
+            else if (b.colour == Color.DarkOrchid)
             {
                 b.colour = Color.Orchid;
             }
-            if(b.colour == Color.Orchid)
+            if (b.colour == Color.Orchid)
             {
                 b.colour = Color.Magenta;
+            }
+        }
+        public void currentLevel()
+        {
+            if (this.BackgroundImage == Properties.Resources.gaBackground2)
+            {
+                state = "level 1";
+            }
+            else if (this.BackgroundImage == Properties.Resources.pmBack)
+            {
+                state = "level 2";
+            }
+            else if (this.BackgroundImage == Properties.Resources.pmBack)
+            {
+                state = "level 3";
+            }
+            else if (this.BackgroundImage == Properties.Resources.donkeykong)
+            {
+                state = "level 4";
+            }
+            else if (this.BackgroundImage == Properties.Resources.tetris)
+            {
+                state = "level 2";
             }
         }
     }
