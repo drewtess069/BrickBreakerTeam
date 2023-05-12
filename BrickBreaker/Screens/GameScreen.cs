@@ -405,14 +405,6 @@ namespace BrickBreaker
 
                     score += 100;
 
-                    valu = rnd.Next(0, 3);
-                    if (valu == 2)
-                    {
-                        PowerUp newPowerUp = new PowerUp(0, 0, 0, 3, null, null, true, 12, 12);
-                        newPowerUp.newBall(b.x, b.y, b.width, b.height, lazerList);
-                        powerUpList.Add(newPowerUp);
-                    }
-
                     break;
                 }
             }
