@@ -68,6 +68,8 @@ namespace BrickBreaker
 
         int valu = 0;
 
+        bool ballDown;
+
         int xSpeed;
         int ySpeed;
 
