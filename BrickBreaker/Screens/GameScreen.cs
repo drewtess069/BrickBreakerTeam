@@ -32,6 +32,7 @@ namespace BrickBreaker
         public static int score = 0;
         public static string state;
 
+        //Image for ball and paddle
         Image paddleImage;
         Image ballImage;
 
@@ -44,20 +45,18 @@ namespace BrickBreaker
         List<Block> blocks = new List<Block>();
 
         // Brushes
-        SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
-        SolidBrush blockBrush = new SolidBrush(Color.Red);
         SolidBrush alphaBrush = new SolidBrush(Color.Blue);
-        SolidBrush greenBrush = new SolidBrush(Color.Green);
-
         // random
         Random rnd = new Random();
+
 
         public Paddle paddle;
         public Rectangle midPaddle;
         public Rectangle leftSideRec;
         public Rectangle rightSideRec;
 
+        //Create lists
         List<PowerUp> powerUpList = new List<PowerUp>();
         List<Lazer> lazerList = new List<Lazer>();
         List<Rectangle> paddleRectangles = new List<Rectangle>();
@@ -66,27 +65,12 @@ namespace BrickBreaker
         int alpha2 = 150;
 
         bool reset = false;
-        // lists
-        //List<PowerUp> powerUpList = new List<PowerUp>();
-        //List<Lazer> lazerList = new List<Lazer> ();
-        //List<Rectangle> paddleRectangles = new List<Rectangle> ();
-
-
-        //public Paddle paddle;
-        //public Rectangle midPaddle;
-        //public Rectangle leftSideRec;
-        //public Rectangle rightSideRec;
-
 
         int valu = 0;
 
         int xSpeed;
         int ySpeed;
 
-        int timeOne;
-        int timeTwo;
-
-        bool ballDown = false;
         bool longPaddle = false;
         bool inUse;
         bool toggle = false;
@@ -101,6 +85,7 @@ namespace BrickBreaker
 
         public void ScoreAndLives()
         {
+            //Display remaining lives and score
             livesLabel.Text = $"Lives: {lives}";
             scoreLabel.Text = $"Score: {score}";
         }

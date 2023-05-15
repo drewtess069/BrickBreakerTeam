@@ -27,6 +27,7 @@ namespace BrickBreaker
 
         }
 
+        //Move ball
         public void Move()
         {
             x = x + Convert.ToInt32(xSpeed);
@@ -43,25 +44,50 @@ namespace BrickBreaker
 
         public bool BlockCollision(Block b)
         {
-            Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
-
+            //Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
+            
+            //Create Rectangles for different sides of block
             Rectangle leftBlock = new Rectangle(b.x, b.y + 5, 13, 15);
             Rectangle rightBlock = new Rectangle(b.x + b.width - 10, b.y + 5, 13, 15);
             Rectangle topBlock = new Rectangle(b.x + 15, b.y, 20, 15);
             Rectangle bottomBlock = new Rectangle(b.x + 15, b.y + b.height - 15, 20, 15);
 
+            //Create rectangle for ball
             Rectangle ballRec = new Rectangle(x, y, size, size);
 
-            if (ballRec.IntersectsWith(leftBlock) || ballRec.IntersectsWith(rightBlock))
+            //Collisions with different parts of rectangle
+            if (ballRec.IntersectsWith(leftBlock))
             {
-                xSpeed *= -1;
+                xSpeed = -Math.Abs(xSpeed);
                 return true;
             }
-            else if (ballRec.IntersectsWith(topBlock) || ballRec.IntersectsWith(bottomBlock))
+            else if (ballRec.IntersectsWith(rightBlock))
             {
-                ySpeed *= -1;
+                xSpeed= Math.Abs(xSpeed);
                 return true;
             }
+            else if (ballRec.IntersectsWith(topBlock))
+            {
+                ySpeed = -Math.Abs(ySpeed);
+                return true;
+            }
+            else if (ballRec.IntersectsWith(bottomBlock))
+            {
+                ySpeed = Math.Abs(ySpeed);
+                return true;
+            }
+
+
+            //if (ballRec.IntersectsWith(leftBlock) || ballRec.IntersectsWith(rightBlock))
+            //{
+            //    xSpeed *= -1;
+            //    return true;
+            //}
+            //else if (ballRec.IntersectsWith(topBlock) || ballRec.IntersectsWith(bottomBlock))
+            //{
+            //    ySpeed *= -1;
+            //    return true;
+            //}
 
             return false;
         }
@@ -69,25 +95,72 @@ namespace BrickBreaker
         public bool PaddleCollision(Paddle p)
         {
 
-            if (Math.Abs(xSpeed) <= 1)
+            //Stop ball from moving pretty much straight up/down or left/right
+            if (Math.Abs(xSpeed) <= 2)
             {
-                xSpeed++;
+                if (xSpeed < 0)
+                {
+                    xSpeed--;
+                }
+                else
+                {
+                    xSpeed++;
+                }
+            }
+            if(Math.Abs(ySpeed) <= 2)
+            {
+                if(ySpeed < 0)
+                {
+                    ySpeed--;
+                }
+                else
+                {
+                    ySpeed++;
+                }
             }
 
+            //Stop ball from moving too fast
+            if (Math.Abs(xSpeed) >= 7.5)
+            {
+                if (xSpeed < 0)
+                {
+                    xSpeed++;
+                }
+                else
+                {
+                    xSpeed--;
+                }
+            }
+            if (Math.Abs(ySpeed) >= 7.5)
+            {
+                if (ySpeed < 0)
+                {
+                    ySpeed++;
+                }
+                else
+                {
+                    ySpeed--;
+                }
+            }
+
+            //Create ball rectangle to compare against player
             Rectangle ballRec = new Rectangle(x, y, size, size);
 
+            //Create player rectangles to check for collisions
             Rectangle playerRec = new Rectangle(p.x, p.y, p.width, p.height);
             Rectangle leftSide = new Rectangle(p.x, p.y, 20, p.height);
             Rectangle rightSide = new Rectangle(p.x + p.width - 20, p.y, 20, p.height);
            // Rectangle middleRec = new Rectangle(p.x + 15, p.y, p.width - 30, p.height);
 
+            //Ensure collision occurs
             if (ballRec.IntersectsWith(playerRec))
             {
+                //Check if collision is with left side
                 if (ballRec.IntersectsWith(leftSide))
                 {
-                    // ySpeed *= -1;
                     if (xSpeed > 0)
                     {
+                        //Adjust speeds accordingly
                         xSpeed *= -0.8f;
                         ySpeed *= -1.1f;
                     }
@@ -97,10 +170,12 @@ namespace BrickBreaker
                         ySpeed *= -0.9f;
                     }
                 }
+                //Check if ball hits right side
                 else if (ballRec.IntersectsWith(rightSide))
                 {
                     if (xSpeed < 0)
                     {
+                        //Adjust speeds
                         xSpeed *= -0.8f;
                         ySpeed *= -1.1f;
                     }
@@ -110,43 +185,13 @@ namespace BrickBreaker
                         ySpeed *= -0.9f;
                     }
                 }
+                //If ball hits middle of paddle, just change ySpeed
                 else
                 {
                     ySpeed *= -1;
                 }
-
-                if (xSpeed > 7)
-                {
-                    if (xSpeed > 0)
-                    {
-                        xSpeed = 6.5f;
-                    }
-                    else
-                    {
-                        xSpeed = -6.5f;
-                    }
-                }
-                if (ySpeed > Math.Abs(7))
-                {
-                    if (ySpeed > 0)
-                    {
-                        ySpeed = 6.5f;
-                    }
-                    else
-                    {
-                        ySpeed = -6.5f;
-                    }
-                }
                 return true;
             }
-            //if (xSpeed == Math.Round(xSpeed, 0))
-            //{
-            //    xSpeed = 4;
-            //}
-            //if (ySpeed == Math.Round(xSpeed, 0))
-            //{
-            //    ySpeed = 4;
-            //}
 
                 return false;
             
