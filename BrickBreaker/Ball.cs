@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Windows.Forms.VisualStyles;
+using System.Media;
 
 //latest
 
@@ -150,11 +151,14 @@ namespace BrickBreaker
             Rectangle playerRec = new Rectangle(p.x, p.y, p.width, p.height);
             Rectangle leftSide = new Rectangle(p.x, p.y, 20, p.height);
             Rectangle rightSide = new Rectangle(p.x + p.width - 20, p.y, 20, p.height);
-           // Rectangle middleRec = new Rectangle(p.x + 15, p.y, p.width - 30, p.height);
+            // Rectangle middleRec = new Rectangle(p.x + 15, p.y, p.width - 30, p.height);
+
+            SoundPlayer playerHitSound = new SoundPlayer(Properties.Resources.paddleHit);
 
             //Ensure collision occurs
             if (ballRec.IntersectsWith(playerRec))
             {
+                playerHitSound.Play();
                 //Check if collision is with left side
                 if (ballRec.IntersectsWith(leftSide))
                 {

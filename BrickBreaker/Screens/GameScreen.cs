@@ -44,6 +44,8 @@ namespace BrickBreaker
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
 
+        SoundPlayer brickBreakSound = new SoundPlayer(Properties.Resources.brickBreak);
+
         // Brushes
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush alphaBrush = new SolidBrush(Color.Blue);
@@ -369,6 +371,7 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
+                    brickBreakSound.Play();
                     if (b.hp == 1)
                     {
                         blocks.Remove(b);
