@@ -190,7 +190,7 @@ namespace BrickBreaker
             {
                 state = "level 5";
                 loadLevel("level3XML");
-                this.BackgroundImage = Properties.Resources.tetris;
+                this.BackgroundImage = Properties.Resources.tsback;
                 paddleImage = Properties.Resources.tspaddle2;
                 ballImage = Properties.Resources.tsball;
             }
@@ -901,9 +901,9 @@ namespace BrickBreaker
             {
                 state = "level 4";
             }
-            else if (this.BackgroundImage == Properties.Resources.tetris)
+            else if (this.BackgroundImage == Properties.Resources.tsback)
             {
-                state = "level 2";
+                state = "level 5";
             }
         }
     }
