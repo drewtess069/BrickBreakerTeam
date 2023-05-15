@@ -63,6 +63,16 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dkball {
+            get {
+                object obj = ResourceManager.GetObject("dkball", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dkpaddle2 {
             get {
                 object obj = ResourceManager.GetObject("dkpaddle2", resourceCulture);
@@ -86,6 +96,16 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap gaBackground2 {
             get {
                 object obj = ResourceManager.GetObject("gaBackground2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gaball2 {
+            get {
+                object obj = ResourceManager.GetObject("gaball2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,10 +143,25 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;leaderboard&gt;
-        ///  &lt;nickname&gt;The evil scary&lt;/nickname&gt;
-        ///  &lt;score&gt; 666&lt;/score&gt;
-        ///&lt;/leaderboard&gt;
-        /// .
+        ///  &lt;highscore&gt;
+        ///    &lt;nickname&gt;The evil scary&lt;/nickname&gt;
+        ///    &lt;score&gt; 666&lt;/score&gt;
+        ///  &lt;/highscore&gt;
+        ///  &lt;highscore&gt;
+        ///    &lt;nickname&gt;The happy smiler&lt;/nickname&gt;
+        ///    &lt;score&gt;545&lt;/score&gt;
+        ///  &lt;/highscore&gt;
+        ///  &lt;highscore&gt;
+        ///    &lt;nickname&gt;The sucky gamer&lt;/nickname&gt;
+        ///    &lt;score&gt;-999&lt;/score&gt;
+        ///  &lt;/highscore&gt;
+        ///  &lt;highscore&gt;
+        ///    &lt;nickname&gt;The newborn baby&lt;/nickname&gt;
+        ///    &lt;score&gt;-100&lt;/score&gt;
+        ///  &lt;/highscore&gt;
+        ///  &lt;highscore&gt;
+        ///    &lt;nickname&gt;The ultimate scorer&lt;/nickname&gt;
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string leaderboard {
             get {
@@ -274,6 +309,16 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pmball3 {
+            get {
+                object obj = ResourceManager.GetObject("pmball3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pmpaddle2 {
             get {
                 object obj = ResourceManager.GetObject("pmpaddle2", resourceCulture);
@@ -307,6 +352,16 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap tsback {
             get {
                 object obj = ResourceManager.GetObject("tsback", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tsball {
+            get {
+                object obj = ResourceManager.GetObject("tsball", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

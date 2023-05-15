@@ -33,6 +33,7 @@ namespace BrickBreaker
         public static string state;
 
         Image paddleImage;
+        Image ballImage;
 
         // Paddle and Ball objects
 
@@ -145,7 +146,7 @@ namespace BrickBreaker
             this.BackgroundImage = Properties.Resources.gaBackground2;
 
             paddleImage = Properties.Resources.gapaddle2;
-
+            ballImage = Properties.Resources.gaball2;
 
 
             loadLevel("level2XML");
@@ -176,13 +177,10 @@ namespace BrickBreaker
             if (state == "level 1")
             {
                 state = "level 2";
-                loadLevel("level4XML");
-                this.BackgroundImage = Properties.Resources.pmBack;
-                paddleImage = Properties.Resources.pmpaddle2;
-
                 loadLevel("level1XML");
                 this.BackgroundImage = Properties.Resources.donkeykong;
                 paddleImage = Properties.Resources.dkpaddle2;
+                ballImage = Properties.Resources.dkball;
             }
             else if (state == "level 2")
             {
@@ -190,6 +188,7 @@ namespace BrickBreaker
                 loadLevel("level4XML");
                 this.BackgroundImage = Properties.Resources.pmBack;
                 paddleImage = Properties.Resources.pmpaddle2;
+                ballImage = Properties.Resources.pmball3;
             }
             else if (state == "level 3")
             {
@@ -204,6 +203,7 @@ namespace BrickBreaker
                 loadLevel("level3XML");
                 this.BackgroundImage = Properties.Resources.tetris;
                 paddleImage = Properties.Resources.tspaddle2;
+                ballImage = Properties.Resources.tsball;
             }
             else if (state == "level 5")
             {
@@ -746,6 +746,7 @@ namespace BrickBreaker
 
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+            e.Graphics.DrawImage(ballImage, ball.x, ball.y);
 
 
 
@@ -898,7 +899,7 @@ namespace BrickBreaker
             {
                 state = "level 1";
             }
-            else if (this.BackgroundImage == Properties.Resources.pmBack)
+            else if (this.BackgroundImage == Properties.Resources.donkeykong)
             {
                 state = "level 2";
             }
@@ -906,7 +907,7 @@ namespace BrickBreaker
             {
                 state = "level 3";
             }
-            else if (this.BackgroundImage == Properties.Resources.donkeykong)
+            else if (this.BackgroundImage == Properties.Resources.zlbackground_1078__800_at__3__0_)
             {
                 state = "level 4";
             }
